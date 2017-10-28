@@ -305,7 +305,7 @@ canvas {
     background: url(./image/rss.png);
     background-size: contain;
 
-    vertical-align: bottom;
+    vertical-align: middle;
     margin-left: 2px;
 }
 
