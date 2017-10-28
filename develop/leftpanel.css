@@ -1,0 +1,279 @@
+#leftSide {
+	transform: scale(-1,1);
+	z-index: 2;
+	transition: z-index 0.4s step-end;
+}
+
+#leftSide.slide {
+	z-index: 0;
+	transition-timing-function: step-start;
+}
+
+#leftSide.slide #left-panel {
+	left: -159px;
+}
+
+#left-panel {
+	float: left;
+	transform: translateY(-60%);
+	left: 0;
+
+	transition: left 0.4s linear;
+}
+
+#left-panel.slide {
+}
+
+#left-panel .row {
+	margin: 0;
+	line-height: initial;
+	font-size: 20px;
+}
+
+#items.row {
+	position: absolute;
+	width: 100%;
+
+	margin-top: 66px;
+	font-size: 70%;
+}
+
+.half {
+	text-align: center;
+	height: 50%;
+}
+
+.mirror {
+	height: 100%;
+	transform: scale(-1,1);
+}
+
+.card-borders {
+	border-radius: 15%;
+	border-top-left-radius: 50% 20%;
+	border-top-right-radius: 50% 20%;
+	overflow: hidden;
+}
+
+.card {
+	position: relative;
+	display: inline-block;
+
+	border: 2px solid #fda;
+	border-top-width: 1px;
+
+	transform: scale(-1,1) rotateY(0deg);
+	opacity:1;
+
+	box-shadow: 0 0 1px 1px rgba(0,0,0,0.5) inset, -1px 1px 4px 1px black;
+	margin-left:0;
+
+	transition: 0.5s ease-out;
+	transition-property: width, height, margin-top, margin-left, transform, opacity;
+}
+
+#deck {
+	perspective: 300px;
+}
+
+#deck .card.hidden {
+	position: absolute;
+
+	display: inline-block;
+
+	width: 37%;
+	height: 96px;
+
+	opacity: 0;
+	transform: scale(-1,1) rotateY(-90deg);
+
+	margin-top: 4px;
+	margin-left:-30px;
+}
+
+.card .background {
+	position: relative;
+	height: 90%;
+	top: 9%;
+
+	border: 2px solid;
+
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.5);
+
+	background-color: inherit;
+
+	background-image:
+			url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQYV2NkgIKGhob/ICYjhgBMpqGhASzJiC4AAJQODQO/pM92AAAAAElFTkSuQmCC),
+			linear-gradient(to bottom, #ddd 0%, #222 100%);
+	background-blend-mode: luminosity;
+	background-repeat: repeat,no-repeat;
+}
+
+.card .timer {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+
+	background: rgba(0,0,0,0.5);
+
+	transition: width linear;
+}
+.card.changing .timer {
+	width: 0;
+}
+
+.one .card {
+	width: 66%;
+	height: 145px;
+	margin-top: -6px;
+}
+.two .card {
+	width: 44%;
+	height: 96px;
+	margin-top: 10px;
+}
+
+.card .image {
+	height: 100%;
+	width: 100%;
+
+	background-repeat: no-repeat;
+	background-color: rgba(128,128,128,0.4);
+}
+
+.card.Kaban {
+	background-color: #2e7;
+}
+.card.Kaban .background {
+	border-color: #2e7;
+}
+.card.Kaban .image {
+	background-image: url(./image/kaban.png);
+	background-size: 110%;
+	background-position-y: 10%;
+	background-position-x: 90%;
+}
+
+.card.Serval {
+	background-color: #fa3;
+}
+.card.Serval .background {
+	border-color: #fa3;
+}
+.card.Serval .image {
+	background-image: url(./image/serval.png);
+	background-size: 120%;
+	background-position-y: 30%;
+}
+.card.Serval .timer {
+	transition-duration: 0.5s;
+}
+
+.summon {
+	display: inline-block;
+	width: 50%;
+	float: left;
+}
+.cntnr  {
+	height: 16px;
+	margin-left: 4px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.pickup {
+	position: relative;
+	display: inline-block;
+
+	height: 16px;
+	margin-left: -6px;
+
+	background: url(./image/sprites.png) no-repeat;
+
+	filter: drop-shadow(2px 0px 3px rgba(0,0,0,0.5));
+}
+
+.placeholder {
+	filter: grayscale(100%) contrast(50%) brightness(0.7);
+}
+
+#Kaban .pickup {
+	width: 32px;
+	background-position-x: -208px;
+	background-position-y: -64px;
+}
+#Serval .pickup {
+	width: 16px;
+	background-position-x: -192px;
+	background-position-y: -64px;
+}
+
+.avatar {
+	width: 50px;
+	height: 50px;
+
+	border-radius: 50%;
+
+	margin: 10px auto 5px auto;
+}
+
+.avatar:before {
+	content: " ";
+
+	position: absolute;
+	margin-left: -6px;
+	margin-top: -6px;
+
+	display: block;
+	width: 50px;
+	height: 50px;
+
+	border: 6px solid #f8ba50;
+	border-radius: 50%;
+
+	z-index: -1;
+}
+
+#Serval .avatar:before {
+	background: url(./image/serval.png), rgba(224,158,61,0.5);
+	background-size: 67px;
+	background-position-y: -20px;
+	background-position-x: -3px;
+}
+#Kaban .avatar:before {
+	background: url(./image/kaban.png), rgba(55,92,74,0.5);
+	background-size: 65px;
+	background-position-y: -4px;
+	background-position-x: -14px;
+}
+
+.avatar.active circle {
+	stroke: #0c0;
+}
+
+.avatar.disabled {
+	filter: grayscale(100%) opacity(0.6);
+}
+.avatar.blocked:not(.active) circle {
+	stroke: #c00;
+}
+
+#Serval .avatar.blocked:not(.active) {
+	background: rgba(176,133,71,0.4);
+}
+#Kaban .avatar.blocked:not(.active) {
+	background: rgba(92,100,77,0.5);
+}
+
+.avatar:not(.disabled):not(.cooldown):not(.active) {
+	cursor: pointer;
+}
+
+svg {
+	overflow: visible;
+}
+circle {
+	stroke: green;
+	stroke-width: 0.16rem;
+	transition: stroke-dashoffset 0s linear;
+}
