@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Japari Parkman</title>
+		<description>A Kemono Friends Pacman modification.</description>
+		<link>http://anoneko.gitlab.io/japari-parkman</link>
+		<atom:link href="http://anoneko.gitlab.io/japari-parkman/feed.xml" rel="self" type="application/rss+xml"/>
+		<lastBuildDate>Thu, 26 Oct 2017 23:26:05 +0300</lastBuildDate>
+		<language>en</language>
+
+		<item>
+			<title>Closed beta is out</title>
+			<description>
+				After months of development and over a hundred commits, my game finally reaches the closed beta test stage.
+				Expect a public release within a week.
+			</description>
+			<link>http://anoneko.gitlab.io/japari-parkman</link>
+			<guid isPermaLink="true">http://anoneko.gitlab.io/japari-parkman</guid>
+			<pubDate>Thu, 26 Oct 2017 23:26:05 +0300</pubDate>
+
+			<category>update</category>
+
+		</item>
+
+	</channel>
+</rss>
