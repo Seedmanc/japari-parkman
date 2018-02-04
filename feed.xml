@@ -33,18 +33,5 @@
         <category>update</category>
 
       </item>
-      <item>
-        <title>nevermind this</title>
-        <description>
-			Для потенциальных подписчиков этой рассылки из группы Вконтакте, мы переезжаем в https://vk.com/kemono_friends13th
-		</description>
-        <link>https://vk.com/kemono_friends13th</link>
-        <guid isPermaLink="true">https://vk.com/kemono_friends13th</guid>
-		<pubDate>Fri, 05 Jan 2018 18:40:00 +0300</pubDate>
-
-        <category>update</category>
-
-      </item>
-
   </channel>
 </rss>
