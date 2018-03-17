@@ -109,8 +109,11 @@ function gameLogic() {
     if (keyboard.pressT && keyboard.buttonsUp) {
         cheats.invincible = !cheats.invincible;
     }
+    if (keyboard.pressJ && keyboard.buttonsUp) {
+        cheats.drawPills = !cheats.drawPills;
+    }
 
-    keyboard.buttonsUp = !(keyboard.pressSpace || (keyboard.pressCTRL && keyboard.pressC) || keyboard.pressT);
+    keyboard.buttonsUp = !(keyboard.pressSpace || (keyboard.pressCTRL && keyboard.pressC) || keyboard.pressT || keyboard.pressJ);
 
 
     if ((Game.score - Game.extrascore >= extraLifeThreshold)) {
@@ -341,15 +344,16 @@ function drawCoin() {
 }
 
 function drawPills() {
-    let div=1, ctx=context, frame = Game.frame;
+    if (!cheats.drawPills) return;
+    let ctx=context, frame = Game.frame;
 
     if (Game.lq) {
-        div = 2; ctx = dotCtx; frame = (frame+1)/2;
+        ctx = dotCtx; frame = (frame+1)/2;
     }
 
     if (Game.frame%2 || !Game.lq) {
         if (Game.lq)
-            ctx.clearRect(0,0, Width*8,Height*8);
+            ctx.clearRect(0,0, Width*16,Height*16);
 
         display.forEach((row, y) => {
             row.forEach((tile, x) => {
@@ -357,14 +361,14 @@ function drawPills() {
                     let shape = (frame+Math.round(random(x*y+gSeed)*3))%4;
                     let hue = Math.round(Game.frame+random(x*y+gSeed)*90)%120;
 
-                    ctx.drawImage(ssCtx.canvas, hue*8,shape*8, 8,8, 16*x/div,16*y/div, 16/div,16/div);
+                    ctx.drawImage(ssCtx.canvas, hue*16,shape*16, 16,16, 16*x,16*y, 16,16);
                 } else if (tile === PILL) {
-                    ctx.drawImage(sprites, 208,24, 24,24, 16*x/div-1,16*y/div-1, 24/div,24/div);
+                    ctx.drawImage(sprites, 208,24, 24,24, 16*x-1,16*y-1, 24,24);
                 }
             })
         });
     }
-    if (Game.lq) context.drawImage(dotCtx.canvas, 0,0, Width*8,Height*8, 0,0, Width*16,Height*16);
+    if (Game.lq) context.drawImage(dotCtx.canvas, 0,0);
 }
 
 function drawPlayer() {

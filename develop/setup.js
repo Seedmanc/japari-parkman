@@ -2,7 +2,8 @@
 
 const cheats = {
     showCeruTarget: false,
-    invincible: false
+    invincible: false,
+    drawPills: true
 };
 
 // game phase durations
@@ -150,6 +151,7 @@ const keyboard = {
     pressSpace: false,
     pressCTRL: false,
     pressT: false,
+    pressJ: false,
     pressC: false,
 
     buttonsUp: false
@@ -185,10 +187,10 @@ offscreenCtx.canvas.width = Width*shdScl;
 offscreenCtx.canvas.height = Height*shdScl;
 offscreenCtx.rect(1,1,offscreenCtx.canvas.width-2,offscreenCtx.canvas.height-2);
 offscreenCtx.clip();
-ssCtx.canvas.width = 8*120;
-ssCtx.canvas.height = 8*4;
-dotCtx.canvas.width = 8*Width;
-dotCtx.canvas.height = 8*Height;
+ssCtx.canvas.width = 16*120;
+ssCtx.canvas.height = 16*4;
+dotCtx.canvas.width = 16*Width;
+dotCtx.canvas.height = 16*Height;
 
 // events
 var move = LEFT;
@@ -390,6 +392,10 @@ window.addEventListener("keydown", function (event) {
             keyboard.pressT = true;
             event.preventDefault();
             break;
+        case 'J'.charCodeAt(0):
+            keyboard.pressJ = true;
+            event.preventDefault();
+            break;
         case '1'.charCodeAt(0):
         case '2'.charCodeAt(0):
         case 97:  //numpad
@@ -413,6 +419,9 @@ window.addEventListener("keyup", function (event) {
             break;
         case 'T'.charCodeAt(0):
             keyboard.pressT = false;
+            break;
+        case 'J'.charCodeAt(0):
+            keyboard.pressJ = false;
             break;
     }
 }, false);

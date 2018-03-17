@@ -125,11 +125,11 @@ function renderSandstar() {
         for (let shape=0; shape<4; shape++) {
             let dx = [0, 1, 1, 0][shape];
             let dy = [0, 0, 1, 1][shape];
-            ssCtx.drawImage(sprites, 128+dx*8,208+dy*8, 8,8, 8*hue,8*shape, 8,8);
+            ssCtx.drawImage(sprites, 128+dx*8,208+dy*8, 8,8, 16*hue,16*shape, 16,16);
         }
         ssCtx.globalCompositeOperation='source-atop';
         ssCtx.fillStyle = `hsla(${hue*3},100%,50%, 0.5)`;
-        ssCtx.fillRect(8*hue,0, 8,8*4);
+        ssCtx.fillRect(16*hue,0, 16,16*4);
     }
 }
 
