@@ -1,4 +1,4 @@
-﻿/* base functionality */
+﻿﻿/* base functionality */
 
 window.onresize();
 warning();

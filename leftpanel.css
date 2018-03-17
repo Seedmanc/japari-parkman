@@ -116,12 +116,16 @@
 
 	background: rgba(0,0,0,0.5);
 
-	transition: width linear;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
 }
-.card.changing .timer {
-	width: 0;
+.paused {
+	animation-play-state: paused;
 }
-
+@keyframes timer {
+	0% {width: 0;}
+	100% {width: 100%;}
+}
 .one .card {
 	width: 66%;
 	height: 145px;
@@ -143,6 +147,9 @@
 
 .card.Kaban {
 	background-color: #2e7;
+}
+.card.Kaban .timer.play {
+	animation-name: timer;
 }
 .card.Kaban .background {
 	border-color: #2e7;
@@ -166,6 +173,7 @@
 	background-position-y: 30%;
 }
 .card.Serval .timer {
+	transition: width linear;
 	transition-duration: 0.5s;
 }
 
@@ -275,5 +283,14 @@ svg {
 circle {
 	stroke: green;
 	stroke-width: 0.16rem;
-	transition: stroke-dashoffset 0s linear;
+
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+}
+circle.play {
+	animation-name: cooldown;
+}
+@keyframes cooldown {
+	0% {stroke-dashoffset: 0;}
+	100% {stroke-dashoffset: 157;}
 }
