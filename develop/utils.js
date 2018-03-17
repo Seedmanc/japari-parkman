@@ -205,6 +205,7 @@ function updateSGui(Summons, full) {
 		let avatar = document.querySelector(`#${key} > .avatar`);
 		let circle = document.querySelector(`#${key} circle`);
 		let card = document.querySelector(`#deck > .card.${key}`);
+		let timerEl = card.querySelector('.timer');
 
 		['active','blocked','disabled'].forEach(state => {
 			if (friend[state]) {
@@ -215,32 +216,22 @@ function updateSGui(Summons, full) {
 		});
 
 		if (!friend.cooldownT) {
-			circle.style.transitionDuration = '0s';
-			circle.style.strokeDashoffset = '0';
+			circle.classList.remove('play')
+		} else if (friend.cooldownT == friend.cooldown) {
+			circle.style.animationDuration = friend.cooldown/60+'s';
+			circle.classList.add('play');
 		}
-		if (friend.cooldownT == friend.cooldown) {
-			requestAnimationFrame(()=>{
-				circle.style.transitionDuration = friend.cooldown/60+'s';
-				circle.style.strokeDashoffset = Math.ceil(Math.PI*50)+'';
-			});
-		}
+
 		if (!friend.timerT && !friend.active) {
 			card.classList.add('hidden');
+			timerEl.classList.remove('play');
 		}
-
 		if ((friend.timerT == friend.timer || !friend.timer) && friend.active) {
-			let timerEl = card.querySelector('.timer');
-
 			card.classList.remove('hidden');
 
 			if (friend.timer) {
-				timerEl.style.transitionDuration = '0s';
-				card.classList.add('changing');
-
-				requestAnimationFrame(()=>{
-					timerEl.style.transitionDuration = friend.timer/60+'s';
-					card.classList.remove('changing');
-				});
+				timerEl.style.animationDuration = friend.timer/60+'s';
+				timerEl.classList.add('play')
 			} else {
 				timerEl.style.width = (100-100*friend.pickup.found/friend.pickup.max)+'%';
 			}
@@ -253,6 +244,8 @@ function updateSGui(Summons, full) {
 			let wrapper = document.querySelector(`#${key} > .cntnr`);
 			let exists =  wrapper.getElementsByClassName(`pickup`);
 
+			circle.classList.toggle('paused', Game.state === PAUSE);
+			timerEl.classList.toggle('paused', Game.state === PAUSE);
 			while(exists.length) {
 				exists[0].parentNode.removeChild((exists[0]));
 			}

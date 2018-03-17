@@ -25,7 +25,7 @@ const Stats = {
 		};
 	})(),
 
-	highscore: function(Game) {
+	highscore(Game) {
 		let name;
 		this.name = this.userdata.name;
 
@@ -80,7 +80,7 @@ const Stats = {
 		window.idSplash.classList.add('show');
 	},
 
-	getUserdata: function(){
+	getUserdata() {
 		this.t = window.setInterval(()=>{
 			if (Game.level == 2 && Game.dotseaten > display.totalDots>>1) {
 				window.clearInterval(Stats.t);
@@ -97,11 +97,11 @@ const Stats = {
 			.then(userdata => Object.assign(this.userdata, userdata))
 			.catch(makeLocal);
 	},
-	storeUserdata: function(id, payload){
+	storeUserdata(id, payload){
 		return this.mongoCall('PUT', ...arguments);
 	},
 
-	leaderboards: function(Game){
+	leaderboards(Game){
 		let level = Math.max(this.userdata.level || 0, Game.level-1);
 		if (Game.state != OVER || level<5 || this.anon || this.local) {
 			warning();
@@ -129,7 +129,7 @@ const Stats = {
 			});
 	},
 
-	mongoCall: function(method, id, payload={}, coll='stats-develop'){
+	mongoCall(method, id, payload={}, coll='stats-develop'){
 		let _id='', body, params =  '';
 
 		if (method == "GET") {
@@ -161,7 +161,7 @@ const Stats = {
 	data: '2c0g0l220k0hvbsusnusvovyty0s0ltnsqsjuivosrtmvpsktwsg0luovovuu4vnvvtk0kstuisksgtmvz0v',
 	data2:"0i1t0o1u0i1t3g0d2k1y241u230e251u2i0026070i000o0e2j072l1u2j0f230m2f002k1u2l070o0i2m001t0b2k060o092j052k0r0i062h0f2f0i0k1u3d0k252l",
 
-	ed: function(input, key) {
+	ed(input, key) {
 		if (!key || !input) return;
 		key = key.split('');
 		var output = [];
@@ -180,7 +180,7 @@ const Stats = {
 		if (hash(output.slice(0,6).join('')) == 'fnmfpc')
 			return output.join('');
 	},
-	uh: function () {
+	uh() {
 		let dr=document.referrer;
 		if (!dr) return;
 		var a=document.createElement('a');

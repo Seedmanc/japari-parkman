@@ -179,7 +179,7 @@ dotCtx.imageSmoothingEnabled= false;
 ssCtx.imageSmoothingEnabled= false;
 offscreenCtx.canvas.width = Width*shdScl;
 offscreenCtx.canvas.height = Height*shdScl;
-offscreenCtx.rect(1,0,offscreenCtx.canvas.width-2,offscreenCtx.canvas.height);
+offscreenCtx.rect(1,1,offscreenCtx.canvas.width-2,offscreenCtx.canvas.height-2);
 offscreenCtx.clip();
 ssCtx.canvas.width = 8*120;
 ssCtx.canvas.height = 8*4;
@@ -387,6 +387,7 @@ window.addEventListener("keydown", function (event) {
 		case 97:  //numpad
 		case 98:
 			summon(Object.keys(Summons)[event.key-1]);
+			event.preventDefault();
 			break;
 	}
 }, false);

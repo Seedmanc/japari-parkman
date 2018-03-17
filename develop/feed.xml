@@ -5,7 +5,7 @@
 		<description>A Kemono Friends Pacman modification.</description>
 		<link>http://anoneko.gitlab.io/japari-parkman</link>
 		<atom:link href="http://anoneko.gitlab.io/japari-parkman/feed.xml" rel="self" type="application/rss+xml"/>
-		<lastBuildDate>Thu, 26 Oct 2017 23:26:05 +0300</lastBuildDate>
+		<lastBuildDate>Thu, 02 Nov 2017 21:24:00 +0300</lastBuildDate>
 		<language>en</language>
 
 		<item>
@@ -17,6 +17,18 @@
 			<link>http://anoneko.gitlab.io/japari-parkman</link>
 			<guid isPermaLink="true">http://anoneko.gitlab.io/japari-parkman</guid>
 			<pubDate>Thu, 26 Oct 2017 23:26:05 +0300</pubDate>
+
+			<category>update</category>
+
+		</item>
+		<item>
+			<title>First public release</title>
+			<description>
+				The game is finally ready, that's assuming GitLab won't act up again.
+			</description>
+			<link>http://anoneko.gitlab.io/japari-parkman</link>
+			<guid isPermaLink="true">http://anoneko.gitlab.io/japari-parkman</guid>
+			<pubDate>Thu, 02 Nov 2017 21:24:00 +0300</pubDate>
 
 			<category>update</category>
 

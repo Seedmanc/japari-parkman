@@ -36,11 +36,6 @@ function isPassable(pos, direction, C) {
 }
 
 function gameover() {
-	Object.values(Summons).forEach(friend => {
-		friend.pickup.found = 0;
-		friend.disabled = true;
-	});
-	updateSGui(Summons, true);
 	keyboard.buttonsUp = false;
 	window.idSplash.classList.add('show');
 
@@ -57,6 +52,15 @@ function gameover() {
 	if (Game.score || Game.level) {
 		Stats.highscoreRunOnce(Game);
 	}
+	Object.values(Summons).forEach(friend => {
+		friend.pickup.found = 0;
+		friend.disabled = true;
+		friend.active = false;
+		friend.cooldownT = 0;
+		friend.timerT = 0;
+		friend.count = 0;
+	});
+	updateSGui(Summons, true);
 
 	window.idShadow.classList.add('blacked');
 
@@ -73,7 +77,8 @@ function gameLogic() {
 				Game.state = ACTIVE;
 				startBtn.textContent = 'Pause';
 				window.idSplash.classList.remove('show');
-				break;
+				updateSGui(Summons, true);
+			break;
 			case ACTIVE:
 				startBtn.textContent = 'Resume';
 				Game.state = PAUSE;
@@ -81,10 +86,8 @@ function gameLogic() {
 				window.idLeaderboards.parentNode.classList.add('hidden');
 				window.idtsuchi.classList.remove('hidden');
 				window.idhelp.classList.remove('hidden');
-				break;
-			case GAMEOVER:
-				newGame();
-				break;
+				updateSGui(Summons, true);
+			break;
 		}
 	}
     if (keyboard.pressCTRL && keyboard.pressC && keyboard.buttonsUp && !Game.japariMode) {
@@ -189,6 +192,8 @@ function gameLogic() {
         }
     }
 
+	if (!Game.state) return;
+
 	for (key in Summons) {
 		let friend = Summons[key];
 
@@ -291,7 +296,7 @@ function drawCoin() {
         Coin.showcounter = 600 - Game.level*10;
 	    Coin.which++;
     }
-    if ((Game.dotseaten == Math.round(display.totalDots * 0.6)) && (Coin.which == 1)) {
+    if ((Game.dotseaten == Math.round(display.totalDots * 0.6)) && (Coin.which == 1) && Game.level > 1) {
         Coin.showcounter = 600 - Game.level*10;
 	    Coin.which++;
     }
