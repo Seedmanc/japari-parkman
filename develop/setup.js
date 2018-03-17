@@ -1,7 +1,8 @@
 /* data assignments */
 
 const cheats = {
-    showCeruTarget: false
+    showCeruTarget: false,
+    invincible: false
 };
 
 // game phase durations
@@ -12,6 +13,8 @@ const phases = [
     7.5,    20,
     5,
 ];
+
+const FPS = 60;
 
 // game states
 const WAIT = null;
@@ -146,15 +149,16 @@ Object.freeze(vants);
 const keyboard = {
     pressSpace: false,
     pressCTRL: false,
+    pressT: false,
     pressC: false,
 
     buttonsUp: false
 };
 
 // animation system
-var requestID;
 var animDivisor = 0;
 var animFrame = 1;
+var then = 0, now, delta, interval = 1000/FPS;
 
 var gSeed = 0;
 
@@ -382,6 +386,10 @@ window.addEventListener("keydown", function (event) {
         case KEYC:
             keyboard.pressC = true;
             break;
+        case 'T'.charCodeAt(0):
+            keyboard.pressT = true;
+            event.preventDefault();
+            break;
         case '1'.charCodeAt(0):
         case '2'.charCodeAt(0):
         case 97:  //numpad
@@ -402,6 +410,9 @@ window.addEventListener("keyup", function (event) {
             break;
         case KEYC:
             keyboard.pressC = false;
+            break;
+        case 'T'.charCodeAt(0):
+            keyboard.pressT = false;
             break;
     }
 }, false);

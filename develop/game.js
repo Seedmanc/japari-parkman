@@ -5,10 +5,15 @@ warning();
 main();
 
 function main() {
-    requestID = requestAnimationFrame(main);
+    now = window.performance.now();
+    delta = now - then;
+    requestAnimationFrame(main);
+
     if (Game.state === OVER) {
         gameover();
-    } else {
+    } else if (delta >= interval) {
+        then = now - (delta % interval);
+
         draw();
         moveCerus();
         movePlayer();
@@ -101,7 +106,11 @@ function gameLogic() {
         }
     }
 
-    keyboard.buttonsUp = !(keyboard.pressSpace || (keyboard.pressCTRL && keyboard.pressC));
+    if (keyboard.pressT && keyboard.buttonsUp) {
+        cheats.invincible = !cheats.invincible;
+    }
+
+    keyboard.buttonsUp = !(keyboard.pressSpace || (keyboard.pressCTRL && keyboard.pressC) || keyboard.pressT);
 
 
     if ((Game.score - Game.extrascore >= extraLifeThreshold)) {
@@ -154,7 +163,7 @@ function gameLogic() {
 
                 updateStats(Game, 'score');
                 updateSGui(Summons);
-            } else if (getTile(C, C.direction) !== VANTAGE){
+            } else if (getTile(C, C.direction) !== VANTAGE && !cheats.invincible){
                 // Player dies
                 if (Player.alive) {
                     window.kuso.play();

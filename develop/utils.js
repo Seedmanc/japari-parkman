@@ -134,7 +134,7 @@ function renderSandstar() {
 }
 
 function warning() {
-    if (!Game.japariMode) return;
+    if (!Game.japariMode || true) return;
     console.clear();
     console.warn("Sugoi, so you're a Friend that's only good at cheating!");
 }
