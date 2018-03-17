@@ -1,4 +1,4 @@
-﻿﻿.row {
+﻿.row {
     line-height: 32px;
     margin-bottom: 4px;
     overflow-x: hidden;
@@ -178,7 +178,7 @@
     content: "";
 }
 #idJapari:not(:checked) + label:hover {
-     opacity: 1;
+    opacity: 1;
 }
 
 .message {

@@ -1,0 +1,314 @@
+﻿body {
+    margin: 0;
+    background-color: grey;
+    display: flex;
+    overflow-x: hidden;
+}
+
+#wrapper {
+    display: flex;
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+}
+
+#idCenter {
+    height: 100%;
+    width: 50%;
+    background-image: url(./image/wall.png);
+    background-size: 3.6vh;
+}
+
+canvas {
+    position: absolute;
+    height: 100%;
+    width: auto;
+}
+#idFloor {
+    background: black;
+}
+#idShadow {
+    opacity: 0.89;
+    background-color: transparent;
+    transition: background-color 0.7s linear;
+}
+
+#idShadow.blacked {
+    opacity: 1;
+    background-color: black;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#idSplash {
+    position: absolute;
+
+    height: 100%;
+    width: 90.3vh;
+
+    z-index: -1;
+    opacity: 0;
+    background-color: black;
+
+    transition: opacity 0.3s linear, z-index 0.3s step-end;
+}
+
+#idSplash.show {
+    opacity: 0.9;
+    z-index: 1;
+    transition-timing-function: linear, step-start;
+}
+
+.lq-wrapper {
+    margin-bottom: calc(2vh);
+    opacity: 0.7;
+    font-size: calc(2vh);
+}
+.lq-wrapper label:not(.hidden) {
+    display: inline-flex;
+}
+#idLq {
+    height: calc(2vh);
+}
+
+#idendgame {
+    margin-bottom: -5vh;
+    margin-top: 2vh;
+
+    text-align: center;
+
+    font-family: Play;
+    color: white;
+    font-size: calc(4vh);
+}
+
+#idendgame .congrats {
+    color: #a84;
+    -webkit-text-stroke: 1px white;
+    font-size: 130%;
+    text-shadow: 1px 1px rgba(255,255,255,0.66),
+                -1px -1px rgba(255,255,255,0.66),
+                1px -1px rgba(255,255,255,0.66),
+                -1px 1px rgba(255,255,255,0.66);
+}
+
+#idendgame .thegame {
+    -webkit-text-stroke: 1px #db7;
+}
+
+#idendgame .tuned {
+    font-size: 80%;
+}
+
+.leaderboards {
+    margin-top: 10%;
+    width: 60%;
+}
+
+#idLeaderboards {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+
+    border-spacing: calc(0.6vh);
+    border-collapse: separate;
+
+    font-family: Play;
+    color: white;
+    font-size: calc(3vh);
+    text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
+
+#idLeaderboards caption {
+    width: 67%;
+
+    background-color: #875;
+
+    padding: 4px;
+    border-radius: 8px;
+    border: 2px solid wheat;
+
+    font-size: calc(3.2vh);
+    margin-bottom: calc(1vh);
+}
+
+#idLeaderboards thead {
+    color: wheat;
+}
+#idLeaderboards .num {
+    text-shadow: none;
+}
+
+#idLeaderboards td:first-of-type {
+    width: 45%;
+
+    background-color: #ec7;
+
+    text-align: left;
+    color: white;
+    font-size: calc(2.6vh);
+    text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+
+    border: 2px solid white;
+    border-radius: 8px;
+}
+
+#idLeaderboards  td:first-of-type.current {
+    color: yellow;
+}
+
+#idLeaderboards td:nth-of-type(2) {
+    font-size: calc(2.8vh);
+    width: 35%;
+}
+#idLeaderboards td:last-of-type {
+    width: 1%;
+}
+
+#idLeaderboards td {
+    padding: 0 calc(2vh);
+
+    background-color: white;
+
+    text-align: right;
+    text-shadow: none;
+    color: black;
+    font-size: calc(3vh);
+
+    border-radius: 8px;
+    border: 2px solid #ec7;
+}
+
+.credits {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    color: white;
+    text-align: center;
+    font-family: Play;
+}
+
+.credits .first-letter {
+    display: inline-block;
+    transform: scale(-1,1);
+}
+
+.thx {
+    color: #985;
+    font-size: 90%;
+    vertical-align: text-top;
+    margin-left: 1em;
+}
+.thx a {
+    color: gray;
+}
+
+.title {
+    width: 90%;
+    height:14%;
+
+    margin-top: 8%;
+}
+.parkman {
+    width: 100%;
+    float: left;
+}
+.japari {
+    position: relative;
+
+    width: auto;
+    height: 105%;
+
+    top: -105%;
+    left: 5%;
+}
+.help {
+    width: 66%;
+    margin-top: 10%;
+}
+.help img {
+    width: 100%;
+}
+.summons {
+    margin-top: 5%;
+}
+
+.tsuchi {
+    width: 10%;
+    margin-top: 10%;
+}
+.tsuchi img {
+    width: 100%;
+}
+
+.sides {
+    flex:1 1 auto;
+    height: 100%;
+
+    background-color: #e95;
+
+    background-image: url(./image/wall.png), url(./image/cliff.png),
+        linear-gradient(to bottom, #2989cc 0%,#eee 32%,#f3be7c 35%,#e69559 38%,#955a34 85%,#643 100%);
+    background-size: 4vh 3.31vh, 50vh 50vh, auto;
+    background-position-x: -1.3vh, -0.6vh, 0;
+    background-position-y: 0, -2vh;
+    background-repeat: repeat-y, no-repeat, repeat-x;
+}
+
+@font-face {
+    font-family: Play;
+    src: url(./image/Play-Bold.ttf);
+}
+
+.panel {
+    position: relative;
+    top: 50%;
+
+    width: 176px;
+    height: 320px;
+
+    transform: translateY(-60%);
+
+    padding: 18px;
+    padding-left: 4px;
+
+    box-sizing: border-box;
+    background: url(./image/panel.png),
+        linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%);
+
+    font-size: 24px;
+    font-family: Play;
+    color: white;
+
+    filter: sepia(0.25);
+    z-index: 1;
+    box-shadow: 0 3px 3px 1px rgba(0,0,0,0.6);
+}
+
+.rss {
+    color: lightgray;
+}
+
+.rss::after {
+    content: " ";
+    display: inline-block;
+
+    width: 22px;
+    height: 22px;
+
+    background: url(./image/rss.png);
+    background-size: contain;
+
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+.hidden {
+    display: none;
+}
