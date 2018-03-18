@@ -344,7 +344,6 @@ function drawCoin() {
 }
 
 function drawPills() {
-    if (!cheats.drawPills) return;
     let ctx=context, frame = Game.frame;
 
     if (Game.lq) {
@@ -357,7 +356,7 @@ function drawPills() {
 
         display.forEach((row, y) => {
             row.forEach((tile, x) => {
-                if (tile === DOT) {
+                if (tile === DOT  && (!Game.japariMode || dots[y][x])) {
                     let shape = (frame+Math.round(random(x*y+gSeed)*3))%4;
                     let hue = Math.round(Game.frame+random(x*y+gSeed)*90)%120;
 
@@ -461,7 +460,7 @@ function drawShadow() {
     if (disabled) {
         shadowCtx.clearRect(0,0,Width*16, Height*16);
     }
-    if (Game.frame % 2 || disabled) return;
+    if (Game.frame % (2+1*Game.lq) || disabled) return;
 
     var {x, y} = Player.blk.pos;
     var z = -(Player.tile || 0);
@@ -502,6 +501,26 @@ function drawShadow() {
     }
     shadowCtx.clearRect(0,0, canvas.width, canvas.height);
     shadowCtx.drawImage(offscreenCtx.canvas, 0,0, Width*shdScl, Height*shdScl, 0,0, canvas.width , canvas.height);
+     let vis;
+
+      if (!(Game.frame % 4)) {
+          if (Game.lq)
+              for (let y=1;y< display.length-1;y+=3) {
+                  for (let x=1;x< display[y].length-1;x+=3) {
+                      if (kernel3((dx,dy) => display[y+dy][x+dx] === DOT, true) ) {
+                          vis = offscreenCtx.getImageData(x * shdScl, y * shdScl, 1, 1).data[3] < 192;
+                          kernel3((dx,dy) => dots[y+dy+1][x+dx-1] = vis);
+                      }
+                  }
+              }
+          else display.forEach((row, y) => {
+              row.forEach((tile, x) => {
+                  if (tile === DOT) {
+                      dots[y][x] = offscreenCtx.getImageData(x*shdScl,y*shdScl,1,1).data[3] < 192;
+                  }
+              })
+          })
+      }
 }
 
 function endGame() {
@@ -1043,6 +1062,7 @@ function startLevel() {
     });
 
     display = Map.map(el => el.slice());
+    dots = Map.map(el => el.slice().map(e=>true));
 
     levelModifiers();
 

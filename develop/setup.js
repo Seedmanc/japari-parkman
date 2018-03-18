@@ -196,6 +196,7 @@ dotCtx.canvas.height = 16*Height;
 var move = LEFT;
 var messageTimer;
 var display = [];
+var dots = [];
 
 // entities
 var Game = {
