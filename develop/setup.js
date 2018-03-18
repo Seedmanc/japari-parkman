@@ -438,7 +438,7 @@ startBtn.onclick = function () {
 
 for (friend in Summons) {
     document.getElementById(friend).onclick = function(event) {
-        summon(event.target.parentNode.id);
+        summon(event.currentTarget.id);
     }
 }
 

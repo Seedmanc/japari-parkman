@@ -356,7 +356,7 @@ function drawPills() {
 
         display.forEach((row, y) => {
             row.forEach((tile, x) => {
-                if (tile === DOT  && (!Game.japariMode || dots[y][x])) {
+                if (tile === DOT  && (!Game.japariMode || dots[y][x] || Summons.Kaban.active)) {
                     let shape = (frame+Math.round(random(x*y+gSeed)*3))%4;
                     let hue = Math.round(Game.frame+random(x*y+gSeed)*90)%120;
 
@@ -503,7 +503,7 @@ function drawShadow() {
     shadowCtx.drawImage(offscreenCtx.canvas, 0,0, Width*shdScl, Height*shdScl, 0,0, canvas.width , canvas.height);
      let vis;
 
-      if (!(Game.frame % 4)) {
+      if (!(Game.frame % 4) && !Summons.Kaban.active) {
           if (Game.lq)
               for (let y=1;y< display.length-1;y+=3) {
                   for (let x=1;x< display[y].length-1;x+=3) {
