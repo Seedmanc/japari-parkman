@@ -375,7 +375,7 @@ function drawPlayer() {
         let bob = Player.isStill ? 0 : Math.floor((animFrame % 4) / 2);
         let tmp = context.shadowColor;
 
-        context.drawImage(sprites, 32*(Player.direction-1), 176, 32, 32, Math.round(Player.x+1)+bob, Math.round(Player.y -1)+bob, 32, 32);
+        context.drawImage(sprites, 32*(Player.direction-1), 176, 32, 32, Math.round(Player.x+1)+bob, Math.round(Player.y -1)+bob, 32+Player.scale, 32+Player.scale);
         context.shadowColor = 'transparent';
 
         if (Ceru.some(C=>C.powerpillTimer>0)) {// wild eyes
@@ -420,15 +420,15 @@ function drawCerus() {
                 if (C.powerpillTimer < 60 + 60*(10-Game.level)/5) {
 
                     // flashing
-                    context.drawImage(sprites, 128+(animFrame % 4)*32, 48 + 32*2, 32, 32, C.x+2+bob, C.y -2, 32, 32);
+                    context.drawImage(sprites, 128+(animFrame % 4)*32, 48 + 32*2, 32, 32, C.x+2+bob, C.y -2, 32+C.scaleX,32+C.scaleY);
                 } else {
                     // blue Ceru
-                    context.drawImage(sprites, 128+((animFrame+gSeed) % 4)*32, 48 + 32, 32, 32, C.x+2+bob, C.y -2, 32, 32);
+                    context.drawImage(sprites, 128+((animFrame+gSeed) % 4)*32, 48 + 32, 32, 32, C.x+2+bob, C.y -2, 32+C.scaleX,32+C.scaleY);
                 }
 
             } else {
                 if (!C.isEye) {
-                    context.drawImage(sprites, ((animFrame+gSeed) % 4)*32, 48 + i*32, 32, 32, C.x +2, C.y -2 +bob, 32, 32);
+                    context.drawImage(sprites, ((animFrame+gSeed) % 4)*32, 48 + i*32, 32, 32, C.x +2, C.y -2 +bob, 32+C.scaleX,32+C.scaleY);
                 }
                 // draw eye
                 if (C.direction !== UP || C.isEye) {
@@ -483,7 +483,7 @@ function drawShadow() {
         let offset = C.isEye ? 10 : C.powerpillTimer ? 5 : 0;
         offscreenCtx.drawImage(sprites,
             192 + Math.floor((animFrame % 4) / 2) * 16, 48, 16, 16, (C.x + 2 + offset) / 16 * shdScl, (C.y + 1 + offset) / 16 * shdScl,
-            (size - 2) / 16 * shdScl, size / 16 * shdScl);
+            (size - 2) / 16 * shdScl+C.scaleX/shdScl, size / 16 * shdScl+C.scaleY/shdScl);
     });
     if (Coin.showcounter) {
         offscreenCtx.drawImage(sprites, 175,31, 18,18, Coin.x/16*shdScl-0.5, Coin.y/16*shdScl , 16/4, 16/4);
@@ -623,8 +623,9 @@ function movePlayer() {
     else
         speed = Game.playerSpeed[3];
 
-
+    Player.scale = 0;
     if (Player.tile == VANTAGE) {
+        Player.scale = 2;
     } else if (getTile(pos, Player.direction) == VANTAGE) {
         // uphill
         speed = speed/1.6;
@@ -707,13 +708,15 @@ function moveCerus() {
 
         if (C.tile === BARS) {
             speed = speed/(2.5-Game.level/10);
+            C.scaleX = -(!!sin[C.direction])*3;
+            C.scaleY = -(!!cos[C.direction])*3;
 
             context.globalAlpha = 0.9;
             context.globalCompositeOperation='source-atop';
             kernel3((dx,dy) => context.drawImage(mapCtx.canvas, 16*(pos.x+dx),16*(pos.y+dy), 16,16, 16*(pos.x+dx),16*(pos.y+dy), 16,16));
             context.globalCompositeOperation='source-over';
             context.globalAlpha = 1;
-        }
+        } else C.scaleX = C.scaleY = 0;
 
         if (getTile(C.blk.pos, C.direction) === VANTAGE) {
             speed = speed/2.3;

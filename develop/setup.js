@@ -221,7 +221,8 @@ var Player = {
     x: 0,
     y: 0,
     isStill: 1,
-    multikill: 1
+    multikill: 1,
+    scale: 0
 };
 
 var Coin = {
@@ -265,7 +266,9 @@ var Ceru = [];
             targetblk: {pos:{x:0,y:0}},
             get homeblk() {return window['findBlk']([25, 2, 867, 840][i])},
             get isEye() {return this.state === HOMECOMING && !this.hometimer},
-            homedelay: 1+i/3
+            homedelay: 1+i/3,
+            scaleX: 0,
+            scaleY: 0,
         }
     );
 });
