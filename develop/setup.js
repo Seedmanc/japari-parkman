@@ -523,7 +523,6 @@ window.addEventListener('load', ()=>{
                 return;
             }
 
-            container.style.width = `${Math.floor(height*canvas.width/canvas.height)}px`;
             lastHeight = height;
             delayed = false;
         });

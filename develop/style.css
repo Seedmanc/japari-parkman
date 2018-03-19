@@ -1,6 +1,12 @@
-﻿body {
+﻿html {
+  height: 100%;
+  background-image: linear-gradient(to bottom, #643 0%,#000 100%);
+  background-color: #643;
+}
+
+body {
     margin: 0;
-    background-color: grey;
+    background-color: #643;
     display: flex;
     overflow-x: hidden;
 }
@@ -15,7 +21,8 @@
 
 #idCenter {
     height: 100%;
-    width: 50%;
+    width: 90.3vh;
+    min-width: calc(90.3vh - 180px);
     background-image: url(./image/wall.png);
     background-size: 3.6vh;
 }
@@ -251,7 +258,7 @@ canvas {
     flex:1 1 auto;
     height: 100%;
 
-    background-color: #e95;
+    background-color: #643;
 
     background-image: url(./image/wall.png), url(./image/cliff.png),
         linear-gradient(to bottom, #2989cc 0%,#eee 32%,#f3be7c 35%,#e69559 38%,#955a34 85%,#643 100%);
