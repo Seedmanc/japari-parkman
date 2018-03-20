@@ -22,9 +22,21 @@ body {
 #idCenter {
     height: 100%;
     width: 90.3vh;
-    min-width: calc(90.3vh - 180px);
+    min-width: calc(90.3vh - 176px);
+
     background-image: url(./image/wall.png);
     background-size: 3.6vh;
+}
+
+@media (hover: none) and (orientation: landscape) {
+  #idCenter, #idSplash {
+    max-width: calc(90.3vh - 76px);
+  }
+}
+@media (hover: none) and (orientation: portrait) {
+  #idSplash {
+    max-width: calc(90.3vh - 176px);
+  }
 }
 
 canvas {
@@ -62,6 +74,7 @@ canvas {
     background-color: black;
 
     transition: opacity 0.3s linear, z-index 0.3s step-end;
+    overflow: hidden;
 }
 
 #idSplash.show {
@@ -71,15 +84,16 @@ canvas {
 }
 
 .lq-wrapper {
-    margin-bottom: calc(2vh);
+    margin-bottom: 1vh;
     opacity: 0.7;
-    font-size: calc(2vh);
+    font-size: calc(1vh + 8px);
 }
 .lq-wrapper label:not(.hidden) {
     display: inline-flex;
 }
 #idLq {
-    height: calc(2vh);
+    width: calc(1vh + 8px);
+    height: calc(1vh + 8px);
 }
 
 #idendgame {
@@ -90,7 +104,7 @@ canvas {
 
     font-family: Play;
     color: white;
-    font-size: calc(4vh);
+    font-size: 4vh;
 }
 
 #idendgame .congrats {
@@ -121,12 +135,12 @@ canvas {
     width: 100%;
     z-index: 1;
 
-    border-spacing: calc(0.6vh);
+    border-spacing: 0.6vh;
     border-collapse: separate;
 
     font-family: Play;
     color: white;
-    font-size: calc(3vh);
+    font-size: 3vh;
     text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
 }
 
@@ -140,8 +154,8 @@ canvas {
     border-radius: 8px;
     border: 2px solid wheat;
 
-    font-size: calc(3.2vh);
-    margin-bottom: calc(1vh);
+    font-size: 3.2vh;
+    margin-bottom: 1vh;
 }
 
 #idLeaderboards thead {
@@ -158,7 +172,7 @@ canvas {
 
     text-align: left;
     color: white;
-    font-size: calc(2.6vh);
+    font-size: 2.6vh;
     text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
 
     border: 2px solid white;
@@ -170,7 +184,7 @@ canvas {
 }
 
 #idLeaderboards td:nth-of-type(2) {
-    font-size: calc(2.8vh);
+    font-size: 2.8vh;
     width: 35%;
 }
 #idLeaderboards td:last-of-type {
@@ -178,20 +192,20 @@ canvas {
 }
 
 #idLeaderboards td {
-    padding: 0 calc(2vh);
+    padding: 0 2vh;
 
     background-color: white;
 
     text-align: right;
     text-shadow: none;
     color: black;
-    font-size: calc(3vh);
+    font-size: 3vh;
 
     border-radius: 8px;
     border: 2px solid #ec7;
 }
 
-.credits {
+.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -201,9 +215,19 @@ canvas {
     font-family: Play;
 }
 
+.credits {
+  font-size: calc(1.5vh + 6px);
+}
+
 .credits .first-letter {
     display: inline-block;
     transform: scale(-1,1);
+}
+
+@media (hover: none) and (orientation:landscape) {
+  .thx {
+    display: none;
+  }
 }
 
 .thx {
@@ -220,7 +244,7 @@ canvas {
     width: 90%;
     height:14%;
 
-    margin-top: 8%;
+    margin-top: calc(9vh - 30px);
 }
 .parkman {
     width: 100%;
@@ -237,13 +261,13 @@ canvas {
 }
 .help {
     width: 66%;
-    margin-top: 10%;
+    margin-top: calc(10vh - 20px);
 }
 .help img {
     width: 100%;
 }
 .summons {
-    margin-top: 5%;
+    margin-top: calc(6vh - 20px);
 }
 
 .tsuchi {

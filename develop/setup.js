@@ -457,6 +457,7 @@ japariBtn.checked = false;
 
 window.idLq.onchange = function () {
     Game.lq = this.checked;
+    localStorage.lq = Game.lq;
 };
 Game.lq = window.idLq.checked;
 
@@ -496,6 +497,10 @@ window.addEventListener('load', ()=>{
 
     if (localStorage.japariMode === 'true')
         japariBtn.click();
+    if (localStorage.lq === 'true') {
+        setTimeout(()=> window.idLq.checked = true);
+        Game.lq = true;
+    }
 });
 
 {
@@ -515,7 +520,7 @@ window.addEventListener('load', ()=>{
                 leftPanel.style.marginLeft =
                     Math.max(-leftPanel.clientWidth, (width - (window.idGame.clientWidth + leftPanel.clientWidth*2))/2) +'px';
             } else if (leftPanel.style.marginLeft != "0px") {
-                leftPanel.style.marginLeft = 0;
+                 leftPanel.style.marginLeft = 0;
             }
 
             if (height === lastHeight) {
