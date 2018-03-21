@@ -15,7 +15,6 @@
 
 #left-panel {
 	float: left;
-	transform: translateY(-60%);
 	left: 0;
 
 	transition: left 0.4s linear;

@@ -35,7 +35,7 @@ body {
 }
 @media (hover: none) and (orientation: portrait) {
   #idSplash {
-    max-width: calc(90.3vh - 176px);
+    max-width: calc(90.3vh - 90px);
   }
 }
 
@@ -86,14 +86,14 @@ canvas {
 .lq-wrapper {
     margin-bottom: 1vh;
     opacity: 0.7;
-    font-size: calc(1vh + 8px);
+    font-size: calc(1.5vh + 6px);
 }
 .lq-wrapper label:not(.hidden) {
     display: inline-flex;
 }
 #idLq {
-    width: calc(1vh + 8px);
-    height: calc(1vh + 8px);
+    width: calc(1.5vh + 8px);
+    height: calc(1.5vh + 8px);
 }
 
 #idendgame {
@@ -216,7 +216,7 @@ canvas {
 }
 
 .credits {
-  font-size: calc(1.5vh + 6px);
+  font-size: calc(1vh + 6px);
 }
 
 .credits .first-letter {
@@ -303,7 +303,6 @@ canvas {
 
     width: 176px;
     height: 320px;
-
     transform: translateY(-60%);
 
     padding: 18px;
@@ -320,6 +319,18 @@ canvas {
     filter: sepia(0.25);
     z-index: 1;
     box-shadow: 0 3px 3px 1px rgba(0,0,0,0.6);
+}
+
+@media (hover: none) and (orientation: portrait) {
+  .panel {
+    transform: translateY(-57%) scale(0.8);
+  }
+  #right-panel {
+    margin-left: -30%;
+  }
+  #left-panel {
+    margin-right: -180px!important;
+  }
 }
 
 .rss {
