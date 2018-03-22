@@ -4,6 +4,15 @@
 	transition: z-index 0.4s step-end;
 }
 
+@media (hover:hover) {
+  .dynamic {
+    margin-left: calc((100vw - (90.3vh + 176px * 2)) / 2);
+  }
+  .folded {
+    margin-left: -176px;
+  }
+}
+
 #leftSide.slide {
 	z-index: 0;
 	transition-timing-function: step-start;

@@ -504,7 +504,6 @@ window.addEventListener('load', ()=>{
 });
 
 {
-    let lastHeight;
     let delayed = false;
 
     window.onresize = function (){
@@ -516,19 +515,18 @@ window.addEventListener('load', ()=>{
             var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
             var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-            if (width <= window.idGame.clientWidth + leftPanel.clientWidth*2) {
-                leftPanel.style.marginLeft =
-                    Math.max(-leftPanel.clientWidth, (width - (window.idGame.clientWidth + leftPanel.clientWidth*2))/2) +'px';
-            } else if (leftPanel.style.marginLeft != "0px") {
-                 leftPanel.style.marginLeft = 0;
+            if (width >= window.idGame.clientWidth
+                && width < window.idGame.clientWidth + leftPanel.clientWidth*2) {
+                leftPanel.classList.remove('folded');
+                leftPanel.classList.add('dynamic');
+            } else if (width <= window.idGame.clientWidth   ) {
+                leftPanel.classList.remove('dynamic');
+                leftPanel.classList.add('folded');
+            } else {
+                leftPanel.classList.remove('dynamic');
+                leftPanel.classList.remove('folded');
             }
 
-            if (height === lastHeight) {
-                delayed = false;
-                return;
-            }
-
-            lastHeight = height;
             delayed = false;
         });
     };
