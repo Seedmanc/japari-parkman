@@ -5,10 +5,10 @@
 }
 
 @media (hover:hover) {
-  .dynamic {
+  .dynamic #left-panel {
     margin-left: calc((100vw - (90.3vh + 176px * 2)) / 2);
   }
-  .folded {
+  .folded #left-panel {
     margin-left: -176px;
   }
 }

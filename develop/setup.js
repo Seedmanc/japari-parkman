@@ -515,16 +515,16 @@ window.addEventListener('load', ()=>{
             var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
             var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-            if (width >= window.idGame.clientWidth
-                && width < window.idGame.clientWidth + leftPanel.clientWidth*2) {
-                leftPanel.classList.remove('folded');
-                leftPanel.classList.add('dynamic');
+            if (width >= window.idGame.clientWidth &&
+              width < window.idGame.clientWidth + leftPanel.clientWidth*2) {
+                window.wrapper.classList.remove('folded');
+                window.wrapper.classList.add('dynamic');
             } else if (width <= window.idGame.clientWidth   ) {
-                leftPanel.classList.remove('dynamic');
-                leftPanel.classList.add('folded');
+                window.wrapper.classList.remove('dynamic');
+                window.wrapper.classList.add('folded');
             } else {
-                leftPanel.classList.remove('dynamic');
-                leftPanel.classList.remove('folded');
+                window.wrapper.classList.remove('dynamic');
+                window.wrapper.classList.remove('folded');
             }
 
             delayed = false;

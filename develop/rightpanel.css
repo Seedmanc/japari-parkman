@@ -257,3 +257,7 @@
 .plus.changing {
     filter: brightness(150%);
 }
+
+.dynamic .sides:last-child {
+  background-position-x: calc(162px + 45.1vh - 50vw), calc(170px + 45.1vh - 50vw), 0;
+}

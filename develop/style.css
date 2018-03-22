@@ -354,3 +354,7 @@ canvas {
 .hidden {
     display: none;
 }
+
+.folded {
+  margin-left: calc(50vw - 45.1vh);
+}
