@@ -1,0 +1,263 @@
+﻿.row {
+    line-height: 32px;
+    margin-bottom: 4px;
+    overflow-x: hidden;
+}
+
+.icon {
+    padding-left: 30px;
+    background-repeat: no-repeat;
+}
+.icon:before {
+    width: 0;
+    display: inline-block;
+    margin-right: 10px;
+
+    content: '×';
+    font-size: 75%;
+    vertical-align: bottom;
+}
+
+#idlevel {
+    margin-top: -4px;
+    line-height: 29px;
+    font-size: 90%;
+}
+#idlevel:before {
+    content: 'Lv. ';
+    margin-left: 3px;
+}
+
+#idscore {
+    background-image: url(./image/score.png);
+    display: inline-flex;
+}
+#idcoins {
+    max-width: 40px;
+    background-image: url(./image/coins.png);
+}
+#idlives {
+    display: inline-block;
+    max-width: 24px;
+    background-image: url(./image/lives.png);
+}
+
+#oneup {
+    display: inline-block;
+
+    width: 92px;
+    height: 32px;
+
+    background: url(./image/1up.png) no-repeat;
+    background-position-x: 60px;
+
+    vertical-align: bottom;
+}
+.progressbar {
+    position: relative;
+
+    width: 0;
+    max-width: 60px;
+    height: 8px;
+
+    top: 11px;
+    left: -4px;
+
+    background: #f2be45;
+
+    border: 1px solid black;
+    border-radius: 4px;
+}
+#barBg {
+    width: 60px;
+    background: #555;
+    opacity: 0.8;
+}
+#idBar {
+    top: 1px;
+}
+
+#idStart {
+    display: block;
+
+    width: 80%;
+    line-height: 28px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 100%;
+    color: white;
+    font-family: Play;
+
+    border-radius: 14px;
+    border-color: orange;
+    background: linear-gradient(#fff999, #ffe539);
+
+    cursor: pointer;
+
+    -webkit-text-stroke: 1px #6e3500;
+    text-shadow: 1px 1px orange, -1px -1px orange, 1px -1px orange, -1px 1px orange;
+
+    opacity: 0.9;
+}
+#idStart:disabled {
+    cursor: default;
+    filter: grayscale(100%);
+    opacity: 0.85;
+}
+#idStart i {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+
+    float: left;
+    margin-top: 3px;
+
+    background: url(./image/paw.png) no-repeat;
+    background-size:cover;
+
+    vertical-align: text-top;
+}
+
+.japari-bar-wrapper {
+    position: relative;
+
+    width: 177px;
+    height: 52px;
+
+    bottom: -44.5%;
+    left: -4px;
+
+    overflow: hidden;
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.7));
+}
+.japari-bar {
+    width: inherit;
+    height:inherit;
+
+    margin-top: 0;
+
+    padding: 8px;
+
+    background: url(./image/japaribar.png) no-repeat;
+    filter: sepia(0.15);
+
+    transition: margin-top 0.5s ease-out;
+}
+.japari-bar.hidden {
+    display: block;
+    margin-top: -49px;
+}
+.japari-bar img {
+    margin-left: -0.4rem;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+#idJapari {
+    height: 18px;
+    width: 18px;
+
+    margin-left: 1px;
+
+    vertical-align: super;
+    filter: invert(100%) brightness(1.5) sepia(0.66) saturate(2);
+}
+#idJapari:not(:checked) + label {
+    filter: grayscale(100%);
+    opacity: 0.8;
+}
+#idJapari:checked:after {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    background-image:url(./image/paw.png);
+    background-size:  cover;
+
+    content: "";
+}
+#idJapari:not(:checked) + label:hover {
+    opacity: 1;
+}
+
+.message {
+    position: absolute;
+    width: 150px;
+    max-height: 104px;
+
+    margin-top: 4px;
+    overflow: hidden;
+
+    text-align: justify;
+    hyphens: auto;
+
+    font-size: 16px;
+    line-height: 16px;
+
+    background-color: rgba(0,0,0,0.2);
+}
+.message i {
+    display: inline-block;
+
+    width: 23px;
+    height: 21px;
+
+    background: url(./image/bossu.png);
+    vertical-align: bottom;
+}
+
+#idMessage:before {
+    content: ": ";
+}
+
+.onchange:after {
+    position: absolute;
+    display: inline-block;
+
+    margin-left: -1rem;
+    margin-top: -1.3em;
+
+    font-size: 80%;
+
+    transition: 1s ease-out;
+    transition-property: opacity,margin-top;
+
+    opacity:0;
+}
+.onchange {
+    filter: brightness(100%);
+    transition: 1s ease-out;
+    transition-property: filter;
+}
+.onchange.changing:after {
+    opacity: 1;
+    margin-top: 0;
+    transition-duration: 0s;
+}
+.onchange.changing {
+    transition-duration: 0s;
+}
+
+.minus:after{
+    color: #f42;
+    margin-top: 1.3rem;
+    content: " -1";
+}
+.plus:after {
+    color: #0f0;
+    margin-top: -1.5rem;
+    content: "+1";
+}
+
+.minus.changing {
+    filter: brightness(75%);
+}
+.plus.changing {
+    filter: brightness(150%);
+}
+
+.dynamic .sides:last-child {
+  background-position-x: calc(162px + 45.1vh - 50vw), calc(170px + 45.1vh - 50vw), 0;
+}
