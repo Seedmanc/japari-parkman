@@ -1,5 +1,5 @@
 /* data assignments */
-
+localStorage.japariMode = 'true';
 const cheats = {
     showCeruTarget: false,
     invincible: false,
@@ -200,7 +200,7 @@ var dots = [];
 
 // entities
 var Game = {
-    japariMode: false,
+    japariMode: true,
     state: OVER,
     score: 0,
     level: 0,
@@ -516,7 +516,7 @@ window.addEventListener('load', ()=>{
             var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
             if (width >= window.idGame.clientWidth &&
-              width < window.idGame.clientWidth + leftPanel.clientWidth*2) {
+                width < window.idGame.clientWidth + leftPanel.clientWidth*2) {
                 window.wrapper.classList.remove('folded');
                 window.wrapper.classList.add('dynamic');
             } else if (width <= window.idGame.clientWidth   ) {
