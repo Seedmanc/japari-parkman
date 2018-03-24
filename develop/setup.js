@@ -448,7 +448,8 @@ japariBtn.onchange = function () {
     localStorage.japariMode = Game.japariMode;
 
     document.querySelector('img.japari').classList.toggle('hidden');
-    document.querySelector('img.summons').classList.toggle('hidden');
+    document.querySelectorAll('img.summons')[0].classList.toggle('hidden');
+    document.querySelectorAll('img.summons')[1].classList.toggle('hidden');
     document.title = `${this.checked ? 'Japari' : ''} PARKMAN`;
 
     updateSGui(Summons, true);
@@ -501,6 +502,18 @@ window.addEventListener('load', ()=>{
         setTimeout(()=> window.idLq.checked = true);
         Game.lq = true;
     }
+});
+
+window.idShadow.addEventListener('click', function(event) {
+  let {x,y} = getCursorPosition(window.idShadow, event);
+  let {x:px, y:py} = Player;
+  let dx = (x - px)>>3; let dy = (y - py)>>3;
+
+  if (Math.abs(dx) > Math.abs(dy) && dx) {
+    move = dx > 0 ? RIGHT : LEFT;
+  } else if (dy) {
+    move = dy > 0 ? DOWN : UP;
+  }
 });
 
 {
