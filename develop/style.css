@@ -266,9 +266,6 @@ canvas {
 .help img {
     width: 100%;
 }
-.summons {
-    margin-top: calc(6vh - 20px);
-}
 
 .tsuchi {
     width: 10%;
@@ -352,9 +349,25 @@ canvas {
 }
 
 .hidden {
-    display: none;
+    display: none!important;
 }
 
 .folded {
   margin-left: calc(50vw - 45.1vh);
+}
+
+.mobile {
+  display: none;
+}
+.desktop {
+  display: block;
+}
+
+@media (hover:none) {
+  .mobile {
+    display: block;
+  }
+  .desktop {
+    display: none;
+  }
 }

@@ -419,3 +419,12 @@ function playSandstar() {
     else
         window.sandstar0.play();
 }
+
+function getCursorPosition(canvas, event) {
+  let rect = canvas.getBoundingClientRect();
+  let scale = (rect.width || 448) / 448;
+  let x = (event.clientX - rect.left)/scale-16;
+  let y = (event.clientY - rect.top)/scale-16;
+
+  return {x,y};
+}
