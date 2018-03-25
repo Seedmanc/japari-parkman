@@ -519,25 +519,21 @@ window.idShadow.addEventListener('click', function(event) {
 {
     let delayed = false;
 
-    window.onresize = function (){
+    window.onresize = function () {
         if (delayed) return;
 
         delayed = true;
 
         requestAnimationFrame(()=>{
-            var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-            var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
             if (width >= window.idGame.clientWidth &&
               width < window.idGame.clientWidth + leftPanel.clientWidth*2) {
-                window.wrapper.classList.remove('folded');
-                window.wrapper.classList.add('dynamic');
-            } else if (width <= window.idGame.clientWidth   ) {
-                window.wrapper.classList.remove('dynamic');
-                window.wrapper.classList.add('folded');
-            } else {
-                window.wrapper.classList.remove('dynamic');
-                window.wrapper.classList.remove('folded');
+               if (window.wrapper.className != 'dynamic') window.wrapper.className = 'dynamic';
+            } else if (width <= window.idGame.clientWidth) {
+               if (window.wrapper.className != 'folded') window.wrapper.className = 'folded';
+            } else  if (window.wrapper.className) {
+               window.wrapper.className = '';
             }
 
             delayed = false;

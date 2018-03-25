@@ -1,0 +1,161 @@
+
+#idSplash {
+  position: absolute;
+
+  height: 100%;
+  width: 90.3vh;
+
+  z-index: -1;
+  opacity: 0;
+  background-color: black;
+
+  transition: opacity 0.3s linear, z-index 0.3s step-end;
+  overflow: hidden;
+}
+
+#idSplash.show {
+  opacity: 0.9;
+  z-index: 1;
+  transition-timing-function: linear, step-start;
+}
+
+.lq-wrapper {
+  margin-bottom: 1vh;
+  opacity: 0.7;
+  font-size: calc(1.5vh + 6px);
+}
+.lq-wrapper label:not(.hidden) {
+  display: inline-flex;
+}
+#idLq {
+  width: calc(1.5vh + 8px);
+  height: calc(1.5vh + 8px);
+}
+
+#idendgame {
+  margin-bottom: -5vh;
+  margin-top: 2vh;
+
+  text-align: center;
+
+  font-family: Play;
+  color: white;
+  font-size: 4vh;
+}
+
+#idendgame .congrats {
+  color: #a84;
+  -webkit-text-stroke: 1px white;
+  font-size: 130%;
+  text-shadow: 1px 1px rgba(255,255,255,0.66),
+  -1px -1px rgba(255,255,255,0.66),
+  1px -1px rgba(255,255,255,0.66),
+  -1px 1px rgba(255,255,255,0.66);
+}
+
+#idendgame .thegame {
+  -webkit-text-stroke: 1px #db7;
+}
+
+#idendgame .tuned {
+  font-size: 80%;
+}
+
+.leaderboards {
+  margin-top: 10%;
+  width: 60%;
+}
+
+#idLeaderboards {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  border-spacing: 0.6vh;
+  border-collapse: separate;
+
+  font-family: Play;
+  color: white;
+  font-size: 3vh;
+  text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
+
+#idLeaderboards caption {
+  width: 67%;
+
+  background-color: #875;
+
+  padding: 4px;
+  border-radius: 8px;
+  border: 2px solid wheat;
+
+  font-size: 3.2vh;
+  margin-bottom: 1vh;
+}
+
+#idLeaderboards thead {
+  color: wheat;
+}
+#idLeaderboards .num {
+  text-shadow: none;
+}
+
+#idLeaderboards td:first-of-type {
+  width: 45%;
+
+  background-color: #ec7;
+
+  text-align: left;
+  color: white;
+  font-size: 2.6vh;
+  text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+
+  border: 2px solid white;
+  border-radius: 8px;
+}
+
+#idLeaderboards  td:first-of-type.current {
+  color: yellow;
+}
+
+#idLeaderboards td:nth-of-type(2) {
+  font-size: 2.8vh;
+  width: 35%;
+}
+#idLeaderboards td:last-of-type {
+  width: 1%;
+}
+
+#idLeaderboards td {
+  padding: 0 2vh;
+
+  background-color: white;
+
+  text-align: right;
+  text-shadow: none;
+  color: black;
+  font-size: 3vh;
+
+  border-radius: 8px;
+  border: 2px solid #ec7;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  color: white;
+  text-align: center;
+  font-family: Play;
+}
+
+.credits {
+  font-size: calc(1vh + 6px);
+}
+
+.credits .first-letter {
+  display: inline-block;
+  transform: scale(-1,1);
+}

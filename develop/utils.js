@@ -197,6 +197,8 @@ function updateStats(Game, ...fields) {
 }
 
 function updateSGui(Summons, full) {
+    if (!Game.japariMode) return;
+
     let total = Object.values(Summons).filter(el=>el.active).length;
     document.getElementById('deck').className = 'half ' + (total > 1 ? 'two' : 'one');
 
