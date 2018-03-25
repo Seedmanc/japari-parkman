@@ -163,3 +163,25 @@
 .help .hidden {
   display: none!important;
 }
+
+.phone {
+  background: none!important;
+  border: none!important;
+  padding: 0!important;
+}
+
+.alpha {
+  filter: saturate(1.4);
+}
+
+#idLeaderboards tbody tr:not(.alpha) {
+  filter: saturate(0.8);
+}
+
+#idLeaderboards img {
+  max-height: 4vh;
+}
+
+#idLeaderboards tbody tr td:nth-last-child(2) {
+  border: 1px solid black!important;
+}

@@ -360,6 +360,7 @@ var Summons = {
 };
 
 window.addEventListener("keydown", function (event) {
+  isMobile = false;
     switch (event.keyCode) {
         case KEYUP:
         case 'W'.charCodeAt(0):
@@ -549,4 +550,5 @@ window.idShadow.addEventListener('click', function(event) {
     if (isGecko && ~navigator.userAgent.toLowerCase().indexOf("mobile")) {
       window.idStart.disabled=false;
     }
+    var isMobile = 'ontouchstart' in document.documentElement;
 }

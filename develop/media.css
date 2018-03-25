@@ -93,6 +93,7 @@
 @media (hover:none), (-moz-touch-enabled:1) {
   .title {
     height:10%;
-    margin-top: calc(4vh);
+
+    margin-top: calc(3vh);
   }
 }

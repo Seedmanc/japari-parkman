@@ -1,7 +1,6 @@
 const Stats = {
 	id: localStorage.jParkmanId || hash(
 			(new Date()).getTimezoneOffset() +
-			window.screen.availHeight +
 			window.navigator.hardwareConcurrency +
 			window.navigator.language +
 			window.navigator.userAgent),
@@ -49,6 +48,7 @@ const Stats = {
 			score: Game.score,
 			coins: Game.coins,
 			level: Game.level-1,
+           mobile: isMobile,
 			deadpool: this.deadpool.slice(0,Game.level),
 			lowfps: Game.lq
 		};
@@ -60,7 +60,7 @@ const Stats = {
 			if (this.userdata.level === undefined || Game.level-1 > this.userdata.level)
 				payload.highscore = Game.score
 			else
-				payload = {highscore: Game.score, lowfps: Game.lq};
+				payload = {highscore: Game.score, lowfps: Game.lq, mobile: isMobile};
 
 			if (this.name)
 				payload.name = this.name;
@@ -93,6 +93,7 @@ const Stats = {
 				delete Stats.data;
 			}
 		},1000);
+
 		return this.mongoCall('GET', this.id)
 			.then(userdata => Object.assign(this.userdata, userdata))
 			.catch(makeLocal);
@@ -111,15 +112,20 @@ const Stats = {
 		this.mongoCall('LIST')
 			.then(players => {
 				if (!players || !players.length) return;
-
 				let tbody = document.querySelector('#idLeaderboards tbody');
 				tbody.innerHTML = '';
+
 				players.forEach(player => {
 					let tr = document.createElement('tr');
+					if (player.time && (+new Date(player.time.$date) < 1522281600000)) { // March 29, 2018
+					  tr.className = 'alpha';
+					  tr.title = 'beat the game before it was easy';
+                  }
 					let name = player.name.split('#')[0];
 					let num = player.name.split('#')[1]||'';
 
-					tr.innerHTML = `<td ${player.name==this.name?'class="current"':''}>${name}<span class="num">${num && ('#'+num)}</span></td><td>${player.highscore}</td><td>${player.level}</td>`;
+tr.innerHTML = `<td ${player.name==this.name?'class="current"':''}>${name}<span class="num">${num && ('#'+num)}</span></td><td>${player.highscore}</td>
+<td>${player.level}</td><td class="phone">${player.mobile?'<img title="Sugoi, you got so far on mobile!" src="./image/lucky-phone.png">':''}</td>`;
 					tbody.appendChild(tr);
 				});
 				window.idLeaderboards.parentNode.classList.remove('hidden');
@@ -139,7 +145,7 @@ const Stats = {
 			body = JSON.stringify({$set: Object.assign(payload, {"time": {"$date": new Date().toISOString()}}) })
 		} else {
 			method = "GET"; id = '';
-			params = `&q={name:{$exists:true}}&s={highscore:-1}&l=10&f={_id:0,name:1,highscore:1,level:1}`
+			params = `&q={name:{$exists:true}}&s={highscore:-1}&l=10&f={_id:0,name:1,highscore:1,level:1,mobile:1,time:1}`
 		}
 		let url = `https://api.mlab.com/api/1/databases/jparkman/collections/${coll}/${id}?%61%70%69%4B%65%79=%47n%65a%6CB%438\x46%6E\x2D\x2d%7A\x36%51%36`;
 
