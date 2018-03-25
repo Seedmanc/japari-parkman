@@ -67,7 +67,7 @@ function gameover() {
     });
     updateSGui(Summons, true);
 
-    window.idShadow.classList.add('blacked');
+    window.idShadow.className = 'blacked';
 
     if (keyboard.pressSpace && !startBtn.disabled) //ugly hack
         newGame();
@@ -527,6 +527,7 @@ function endGame() {
     if (Game.state != OVER) {
 
         window.idLq.parentNode.classList.add('hidden');
+        document.querySelector('.summons.mobile').classList.add('hidden');
         window.idendgame.classList.remove('hidden');
         setTimeout(()=>window.win.play(),100);
 
@@ -981,11 +982,12 @@ function newGame() {
     window.idhelp.classList.remove('hidden');
     window.idLq.parentNode.classList.remove('hidden');
     window.idendgame.classList.add('hidden');
-    window.idShadow.classList.remove('blacked'); //not sure if needed
+    window.idShadow.className = '';
 
     if (Game.japariMode) {
         Stats.highscoreRunOnce();
         Stats.getUserdata().then(warning);
+        document.querySelector('.summons.mobile').classList.remove('hidden');
     }
 
     window.youkoso.currentTime = 0;

@@ -13,7 +13,6 @@
   <meta name="abstract" content="A Kemono Friends inspired Pacman modification">
   <meta name="date" content="2017-11-09">
   <meta name="theme-color" content="#38c"/>
-  <base href="//seedmanc.github.io/japari-parkman/develop/">
 
   <title>
     PARKMAN
@@ -93,12 +92,18 @@
     window.onload = function(){window.idloader.classList.add('hidden'); window.idStart.disabled=false;}
   </script>
   <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="stylesheet" href="screens.css" type="text/css">
   <link rel="stylesheet" href="rightpanel.css" type="text/css">
   <link rel="stylesheet" href="leftpanel.css" type="text/css">
+  <link rel="stylesheet" href="cards.css" type="text/css">
+  <link rel="stylesheet" href="media.css" type="text/css">
   <link rel="canonical" href="http://seedmanc.github.io/japari-parkman/">
   <link rel="alternate" type="application/rss+xml" title="Japari Parkman updates" href="feed.xml">
 </head>
 <body>
+<audio preload="" autoplay="">
+  <source src="audio/startup.mp3" type="audio/mpeg">
+</audio>
 <div id="wrapper">
   <div id="idloader">
     <div class="ceru">
@@ -120,7 +125,7 @@
                 </circle>
               </svg>
             </div>
-            <div class="cntnr"></div>
+            <div class="cntnr"><i class="placeholder pickup"></i></div>
           </div>
           <div id="Serval" class="summon">
             <div class="avatar disabled">
@@ -129,7 +134,7 @@
                 </circle>
               </svg>
             </div>
-            <div class="cntnr"></div>
+            <div class="cntnr"><i class="placeholder pickup"></i></div>
           </div>
           <div class="row" id="items">Items</div>
 
