@@ -244,24 +244,26 @@ function updateSGui(Summons, full) {
         if (full) {
             let pickup = friend.pickup;
             let wrapper = document.querySelector(`#${key} > .cntnr`);
-            let exists =  wrapper.getElementsByClassName(`pickup`);
+            let exists =  wrapper.querySelectorAll(`.pickup:not(.placeholder)`);
+            let placeholder =  wrapper.getElementsByClassName(`placeholder`);
 
             circle.classList.toggle('paused', Game.state === PAUSE);
             timerEl.classList.toggle('paused', Game.state === PAUSE);
-            while(exists.length) {
-                exists[0].parentNode.removeChild((exists[0]));
+
+            if (exists.length) {
+              [].slice.call(wrapper.childNodes).forEach(node => {
+                if (!node.classList.contains('placeholder')) {
+                  node.parentNode.removeChild(node);
+                }
+              })
             }
 
             for (let i=0; i<pickup.found; i++){
-                let newPick = wrapper.appendChild(document.createElement('i'));
+                let newPick = wrapper.insertBefore(document.createElement('i'), placeholder[0]);
                 newPick.className = `pickup`;
                 newPick.style.zIndex = pickup.max - i;
             }
 
-            if (!exists.length) {
-                let newPick = wrapper.appendChild(document.createElement('i'));
-                newPick.className = `placeholder pickup`;
-            }
         }
 
     }

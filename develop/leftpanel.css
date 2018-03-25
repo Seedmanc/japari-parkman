@@ -76,6 +76,10 @@
 	filter: grayscale(100%) contrast(50%) brightness(0.7);
 }
 
+.pickup + .pickup.placeholder {
+  display: none;
+}
+
 #Kaban .pickup {
 	width: 32px;
 	background-position-x: -208px;

@@ -67,7 +67,7 @@ function gameover() {
     });
     updateSGui(Summons, true);
 
-    window.idShadow.classList.add('blacked');
+    window.idShadow.className = 'blacked';
 
     if (keyboard.pressSpace && !startBtn.disabled) //ugly hack
         newGame();
@@ -981,7 +981,7 @@ function newGame() {
     window.idhelp.classList.remove('hidden');
     window.idLq.parentNode.classList.remove('hidden');
     window.idendgame.classList.add('hidden');
-    window.idShadow.classList.remove('blacked'); //not sure if needed
+    window.idShadow.className = '';
 
     if (Game.japariMode) {
         Stats.highscoreRunOnce();
