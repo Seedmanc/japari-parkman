@@ -527,6 +527,7 @@ function endGame() {
     if (Game.state != OVER) {
 
         window.idLq.parentNode.classList.add('hidden');
+        document.querySelector('.summons.mobile').classList.add('hidden');
         window.idendgame.classList.remove('hidden');
         setTimeout(()=>window.win.play(),100);
 
@@ -986,6 +987,7 @@ function newGame() {
     if (Game.japariMode) {
         Stats.highscoreRunOnce();
         Stats.getUserdata().then(warning);
+        document.querySelector('.summons.mobile').classList.remove('hidden');
     }
 
     window.youkoso.currentTime = 0;

@@ -74,7 +74,7 @@ const Stats = {
 			this.storeUserdata(this.id, payload).then(()=>this.leaderboards(Game));
 
 			if (Game.level <= 10 && this.name && !this.anon && Game.level > 1 && !this.local)
-				alert(`You're lvl. ${Game.level-1} now, tanoshii!\n Leaderboards are available at lvl.5+`);
+				alert(`You're lvl. ${Game.level-1} now, tanoshii!\n Leaderboards are available at lvl.4+`);
 		}
 
 		window.idSplash.classList.add('show');
@@ -103,7 +103,7 @@ const Stats = {
 
 	leaderboards(Game){
 		let level = Math.max(this.userdata.level || 0, Game.level-1);
-		if (Game.state != OVER || level<5 || this.anon || this.local) {
+		if (Game.state != OVER || level<4 || this.anon || this.local) {
 			warning();
 			return;
 		}
