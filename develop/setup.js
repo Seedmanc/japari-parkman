@@ -545,4 +545,8 @@ window.idShadow.addEventListener('click', function(event) {
         ((!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) //is chrOpera
     ) && !!window.CSS;
     var isGecko = !isBlink && typeof InstallTrigger !== 'undefined';
+
+    if (isGecko && ~navigator.userAgent.toLowerCase().indexOf("mobile")) {
+      window.idStart.disabled=false;
+    }
 }

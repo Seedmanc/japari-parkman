@@ -1,4 +1,5 @@
 /* screens */
+/* chrome */
 @media (hover: none) and (orientation: landscape) {
   #idCenter, #idSplash {
     max-width: calc(90.3vh - 76px);
@@ -14,16 +15,28 @@
     display: none;
   }
 }
-@media (hover:none) {
-  .mobile {
-    display: block;
+/* FF */
+@media  (-moz-touch-enabled: 1) and (orientation: landscape) {
+  #idCenter, #idSplash {
+    max-width: calc(90.3vh);
   }
-  .desktop {
+}
+@media  (-moz-touch-enabled: 1) and (orientation: portrait) {
+  #idCenter, #idSplash {
+    max-width:  72.3vh ;
+  }
+  #wrapper {
+    max-height: 80%;
+  }
+}
+@media  (-moz-touch-enabled: 1) and (orientation:landscape) {
+  .thx {
     display: none;
   }
 }
 
 /* panels */
+/* chrome */
 @media (hover: none) and (orientation: portrait) {
   .panel {
     transform: translateY(-57%) scale(0.8);
@@ -35,14 +48,44 @@
     margin-left: -156px;
   }
 }
+/* FF */
+@media  (-moz-touch-enabled: 1) and (orientation: portrait) {
+  .panel {
+    transform: translateY(-60%);
+  }
+  #right-panel {
+    margin-left: -260px;
+  }
+  #left-panel {
+    margin-left: -166px;
+  }
+  .folded {
+    margin-left: -2.5%;
+  }
+}
+
+/* onload FF fix */
+@media (-moz-touch-enabled: 1) {
+  #idloader {
+    display: none;
+  }
+}
 
 
-/* left panel */
-@media (hover:hover) {
+/* common */
+@media (hover:hover), (-moz-touch-enabled: 0) {
   .dynamic #left-panel {
     margin-left: calc((100vw - (90.3vh + 176px * 2)) / 2);
   }
   .folded #left-panel {
     margin-left: -176px;
+  }
+}
+@media (hover:none),(-moz-touch-enabled: 1) {
+  .mobile {
+    display: block;
+  }
+  .desktop {
+    display: none;
   }
 }
