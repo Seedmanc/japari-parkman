@@ -205,7 +205,10 @@
         <img class="summons hidden mobile" src="./image/summons-mobile.png"/>
       </div>
       <div class="footer">
-        <div class="lq-wrapper"><label><input id="idLq" type="checkbox">low fps fix</label></div>
+        <div class="lq-wrapper">
+          <label title="reduce effects, raise fps"><input id="idLq" type="checkbox">low fps fix</label>
+          <label title="fix game speed on hi-fps displays"><input id="idLimit" type="checkbox">cap fps to 60</label>
+        </div>
         <div class="credits">
           <div class="first-letter">©</div> <span style="display: inline-block; margin-bottom: 0.1rem;">
                           <a style="color: white;" href="https://twitter.com/Seedmanc"
@@ -240,8 +243,7 @@
         <i></i><span id="idMessage"></span>
       </div>
       <div class="japari-bar-wrapper">
-        <div class="japari-bar">
-          <!--<input type="checkbox" id="idJapari" onclick="ga('send', 'event', { eventCategory: 'idJapari', eventAction: 'button_click', eventLabel: 'Japari_mode'});">-->
+        <div class="japari-bar" title="switch between main game mode & practice">
           <input type="checkbox" id="idJapari">
           <label for="idJapari"><img src="./image/japarimode.png"></label>
         </div>

@@ -7,11 +7,12 @@ main();
 function main() {
     now = window.performance.now();
     delta = now - then;
+
     requestAnimationFrame(main);
 
     if (Game.state === OVER) {
         gameover();
-    } else if (delta >= interval) {
+    } else if (delta >= interval || !Game.limitFps) {
         then = now - (delta % interval);
 
         draw();
@@ -43,6 +44,12 @@ function isPassable(pos, direction, C) {
 function gameover() {
     keyboard.buttonsUp = false;
     window.idSplash.classList.add('show');
+
+    then = now - (delta % interval);
+    if (delta*1.2 < interval && !localStorage.limitFps) {
+      Game.limitFps = true;
+      window.idLimit.checked = true;
+    }
 
 	// TODO move out of this function
     if (window.chase) {
@@ -652,7 +659,7 @@ function movePlayer() {
         if (Game.level > 10) {
             endGame();
         } else {
-            startLevel();
+            startLevel(true);
             updateStats(Game, 'level');
         }
     }
@@ -1007,7 +1014,7 @@ function newGame() {
     generateBars();
     Stats.deadpool = (new Array(10)).fill({lost:0});
 
-    startLevel();
+    startLevel(true);
     renderSandstar();
 
     showMessage('Welcome to the Underground Labyrinth!' + (Game.japariMode ? '<br>Can you make it to the end in one piece?' : ''),
@@ -1017,7 +1024,7 @@ function newGame() {
     window.idSplash.classList.remove('show');
 }
 
-function startLevel() {
+function startLevel(resetDots) {
     startBtn.textContent = 'Pause';
 
     window.chase.pause();
@@ -1066,7 +1073,18 @@ function startLevel() {
         dotseaten:      0
     });
 
+    let remainingDots = display.slice().map(r => r.slice());
     display = Map.map(el => el.slice());
+
+    if (!resetDots)
+      display.forEach((row,y) =>
+        row.forEach((tl,x) => {
+          if ([PILL,DOT].includes(getTile({x,y})) && ![PILL,DOT].includes(remainingDots[y][x])) {
+            setTile({x,y}, undefined);
+          }
+        })
+      );
+
     dots = Map.map(el => el.slice().map(e=>true));
 
     levelModifiers();

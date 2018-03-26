@@ -3,7 +3,7 @@ localStorage.japariMode = 'true';
 const cheats = {
     showCeruTarget: false,
     invincible: false,
-    drawPills: true
+    drawPills: false
 };
 
 // game phase durations
@@ -214,7 +214,8 @@ var Game = {
     coins: 0,
     enableLava: false,
     get scoreTo1Up() {return (this.score % extraLifeThreshold)/extraLifeThreshold},
-    lq: false
+    lq: false,
+    limitFps: false
 };
 
 var Player = {
@@ -463,6 +464,12 @@ window.idLq.onchange = function () {
 };
 Game.lq = window.idLq.checked;
 
+window.idLimit.onchange = function () {
+    Game.limitFps = this.checked;
+    localStorage.limitFps = Game.limitFps;
+};
+Game.limitFps = window.idLimit.checked;
+
 
 window.addEventListener('load', ()=>{
     window.youkoso.volume=0.35;
@@ -503,6 +510,10 @@ window.addEventListener('load', ()=>{
         setTimeout(()=> window.idLq.checked = true);
         Game.lq = true;
     }
+    if (localStorage.limitFps === 'true') {
+        setTimeout(()=> window.idLimit.checked = true);
+        Game.limitFps = true;
+    }
 });
 
 window.idShadow.addEventListener('click', function(event) {
@@ -529,7 +540,7 @@ window.idShadow.addEventListener('click', function(event) {
             let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
             if (width >= window.idGame.clientWidth &&
-                width < window.idGame.clientWidth + leftPanel.clientWidth*2) {
+              width < window.idGame.clientWidth + leftPanel.clientWidth*2) {
                if (window.wrapper.className != 'dynamic') window.wrapper.className = 'dynamic';
             } else if (width <= window.idGame.clientWidth) {
                if (window.wrapper.className != 'folded') window.wrapper.className = 'folded';

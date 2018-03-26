@@ -27,7 +27,10 @@
 .lq-wrapper label:not(.hidden) {
   display: inline-flex;
 }
-#idLq {
+.lq-wrapper label + label {
+  margin-left: 2vh;
+}
+#idLq, #idLimit {
   width: calc(1.5vh + 8px);
   height: calc(1.5vh + 8px);
 }
