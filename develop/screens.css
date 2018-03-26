@@ -188,3 +188,14 @@
 #idLeaderboards tbody tr td:nth-last-child(2) {
   border: 1px solid black!important;
 }
+
+.tsuzuku {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-weight: bold;
+  font-size: 7vh;
+  opacity: 0.2;
+  filter: blur(0.5vh);
+  pointer-events: none;
+}

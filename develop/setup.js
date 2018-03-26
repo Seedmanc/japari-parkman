@@ -1,5 +1,5 @@
 /* data assignments */
-localStorage.japariMode = 'true';
+
 const cheats = {
     showCeruTarget: false,
     invincible: false,
@@ -160,7 +160,7 @@ const keyboard = {
 // animation system
 var animDivisor = 0;
 var animFrame = 1;
-var then = 0, now, delta, interval = 1000/FPS;
+var then = 0, now, delta, interval = 1000/FPS, then2 = 0;
 
 var gSeed = 0;
 
@@ -222,7 +222,7 @@ var Player = {
     x: 0,
     y: 0,
     isStill: 1,
-    multikill: 1,
+    multikill: 0,
     scale: 0
 };
 
@@ -445,18 +445,21 @@ for (friend in Summons) {
 }
 
 japariBtn.onchange = function () {
+    localStorage.japariMode = this.checked;
     Game.japariMode = this.checked;
-    window.leftSide.classList.toggle('slide');
-    localStorage.japariMode = Game.japariMode;
 
-    document.querySelector('img.japari').classList.toggle('hidden');
-    document.querySelectorAll('img.summons')[0].classList.toggle('hidden');
-    document.querySelectorAll('img.summons')[1].classList.toggle('hidden');
-    document.title = `${this.checked ? 'Japari' : ''} PARKMAN`;
-
-    updateSGui(Summons, true);
+    onJMchange();
 };
-japariBtn.checked = false;
+function onJMchange() {
+  window.leftSide.classList.toggle('slide', !Game.japariMode);
+  document.querySelector('img.japari').classList.toggle('hidden', !Game.japariMode);
+  document.querySelectorAll('img.summons')[0].classList.toggle('hidden', !Game.japariMode);
+  document.querySelectorAll('img.summons')[1].classList.toggle('hidden', !Game.japariMode);
+  document.title = `${Game.japariMode ? 'Japari' : ''} PARKMAN`;
+
+  japariBtn.checked = Game.japariMode;
+  updateSGui(Summons, true);
+}
 
 window.idLq.onchange = function () {
     Game.lq = this.checked;
@@ -504,8 +507,10 @@ window.addEventListener('load', ()=>{
     window.uh.volume=0.4;
     window.win.volume=0.4;
 
-    if (localStorage.japariMode === 'true')
-        japariBtn.click();
+    if (localStorage.japariMode) {
+      Game.japariMode = localStorage.japariMode === 'true';
+    }
+    onJMchange();
     if (localStorage.lq === 'true') {
         setTimeout(()=> window.idLq.checked = true);
         Game.lq = true;

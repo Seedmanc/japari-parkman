@@ -45,11 +45,13 @@ function gameover() {
     keyboard.buttonsUp = false;
     window.idSplash.classList.add('show');
 
-    then = now - (delta % interval);
-    if (delta*1.2 < interval && !localStorage.limitFps) {
-      Game.limitFps = true;
-      window.idLimit.checked = true;
+    if (localStorage.limitFps === undefined && !isMobile) {
+      let tooFast = (now - then2)*1.25 < interval;
+
+      if (window.idLimit.checked !== tooFast)
+        window.idLimit.checked = tooFast;
     }
+    then2 = now;
 
 	// TODO move out of this function
     if (window.chase) {
@@ -155,11 +157,12 @@ function gameLogic() {
                         Summons.Serval.leave().play();
                         delay = 1000;
                     }
+                    Player.multikill = 0;
                     updateSGui(Summons, true);
                 } else {
                     Player.multikill++;
                 }
-                Game.score += Ceru.score * Math.pow(2,Player.multikill);
+                Game.score += Ceru.score * Math.pow(2,Player.multikill-1);
                 drawNumbers(Player, Math.pow(2, Player.multikill-1) * Ceru.score, wait, 'cyan');
 
                 setTimeout(()=>{
@@ -363,7 +366,7 @@ function drawPills() {
 
         display.forEach((row, y) => {
             row.forEach((tile, x) => {
-                if (tile === DOT  && (!Game.japariMode || dots[y][x] || Summons.Kaban.active)) {
+                if (tile === DOT  && (!Game.japariMode || !Game.lq || Summons.Kaban.active || dots[y][x])) {
                     let shape = (frame+Math.round(random(x*y+gSeed)*3))%4;
                     let hue = Math.round(Game.frame+random(x*y+gSeed)*90)%120;
 
@@ -520,13 +523,6 @@ function drawShadow() {
                       }
                   }
               }
-          else display.forEach((row, y) => {
-              row.forEach((tile, x) => {
-                  if (tile === DOT) {
-                      dots[y][x] = offscreenCtx.getImageData(x*shdScl,y*shdScl,1,1).data[3] < 192;
-                  }
-              })
-          })
       }
 }
 
@@ -984,6 +980,7 @@ function tunnel(o) {
 }
 
 function newGame() {
+    Game.limitFps = window.idLimit.checked;
     window.idLeaderboards.parentNode.classList.add('hidden');
     window.idtsuchi.classList.remove('hidden');
     window.idhelp.classList.remove('hidden');
@@ -1048,7 +1045,7 @@ function startLevel(resetDots) {
             state:          HOMECOMING,
             powerpillTimer: 0,
             direction:      UP + Math.round(Math.random()),
-            hometimer:      i * (25 - Game.level),
+            hometimer:      i * (20 - Game.level),
             reverse:        false
         });
         setPos(C, (i + 4.4) * 32 + 2, 13.5*16);
@@ -1116,7 +1113,7 @@ function startLevel(resetDots) {
     gSeed = Math.round(Math.random()*2);
 
     drawShadow();
-    window.idShadow.style.opacity = 0.9+Game.level/100;
+    window.idShadow.style.opacity = 0.9+Game.level/50;
 }
 
 function generateBars() {

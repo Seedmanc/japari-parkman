@@ -18,7 +18,7 @@
 	float: left;
 	left: 0;
 
-	transition: left 0.4s linear;
+	transition: left 0.25s linear;
 }
 
 #left-panel.slide {
