@@ -529,7 +529,7 @@ function drawShadow() {
 function endGame() {
     if (Game.state != OVER) {
 
-        window.idLq.parentNode.classList.add('hidden');
+        document.getElementsByClassName('lq-wrapper')[0].classList.add('hidden');
         document.querySelector('.summons.mobile').classList.add('hidden');
         window.idendgame.classList.remove('hidden');
         setTimeout(()=>window.win.play(),100);
@@ -984,7 +984,7 @@ function newGame() {
     window.idLeaderboards.parentNode.classList.add('hidden');
     window.idtsuchi.classList.remove('hidden');
     window.idhelp.classList.remove('hidden');
-    window.idLq.parentNode.classList.remove('hidden');
+    document.getElementsByClassName('lq-wrapper')[0].classList.remove('hidden');
     window.idendgame.classList.add('hidden');
     window.idShadow.className = '';
 
@@ -1055,10 +1055,10 @@ function startLevel(resetDots) {
     Ceru[0].state = SCATTER;
 
     Object.assign(Coin, {
-        which: 0,
         showcounter:0,
         enableThird: false
     });
+    if (resetDots || Math.random()>0.5) Coin.which = 0;
 
     updateStats(Game);
 

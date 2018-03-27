@@ -97,3 +97,9 @@
     margin-top: calc(3vh);
   }
 }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  #idLeaderboards td:first-of-type {
+    font-weight: bold;
+  }
+}
