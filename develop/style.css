@@ -79,9 +79,9 @@ canvas {
     position: relative;
 
     width: auto;
-    height: 105%;
+    height: 104%;
 
-    top: -105%;
+    top: -104%;
     left: 5%;
 }
 .help {

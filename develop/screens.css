@@ -210,3 +210,14 @@
   -webkit-user-select: none;
   user-select: none;
 }
+
+.version {
+  float: right;
+  margin-top: -6.5vh;
+  margin-right: 2vh;
+  font-weight: bold;
+  position: relative;
+  font-size: 3vh;
+  transform: rotateZ(-25deg);
+  font-family: Play;
+}
