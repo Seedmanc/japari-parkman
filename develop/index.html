@@ -190,7 +190,7 @@
       <div class="hidden" id="idendgame">
         <div class="congrats">Congratulations!</div>
         <div>You've beaten <span class="thegame">the game</span>, for now.</div>
-        <div class="tuned">Stay tuned for possible <a class="rss" rel="alternate" target="_blank" type="application/rss+xml" href="feed.xml">updates</a></div>
+        <div class="tuned">Stay tuned for possible <a onclick="gtag('event', 'rssClick');" class="rss" rel="alternate" target="_blank" type="application/rss+xml" href="feed.xml">updates</a></div>
         <span class="tsuzuku">つづく</span>
       </div>
       <div class="leaderboards centered hidden">
@@ -254,7 +254,7 @@
       </div>
       <div class="japari-bar-wrapper">
         <div class="japari-bar" title="switch between main game mode & practice">
-          <input type="checkbox" id="idJapari">
+          <input type="checkbox" id="idJapari" onclick="gtag('event', 'japariMode', {'value': +this.checked});">
           <label for="idJapari"><img src="./image/japarimode.png"></label>
         </div>
       </div>
