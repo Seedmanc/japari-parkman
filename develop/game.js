@@ -528,6 +528,7 @@ function drawShadow() {
 
 function endGame() {
     if (Game.state != OVER) {
+        Stats.cerub8(2);
 
         document.getElementsByClassName('lq-wrapper')[0].classList.add('hidden');
         document.querySelector('.summons.mobile').classList.add('hidden');
@@ -931,6 +932,7 @@ function playerDied() {
     updateStats(Game, 'lives:-');
 
     if (Game.lives <= 0) {
+        Stats.cerub8(1);
         window.over.play();
         Game.waitcounter = 150;
         Game.showmessage = GAMEOVER;
@@ -1055,10 +1057,10 @@ function startLevel(resetDots) {
     Ceru[0].state = SCATTER;
 
     Object.assign(Coin, {
+        which: 0,
         showcounter:0,
         enableThird: false
     });
-    if (resetDots || Math.random()>0.5) Coin.which = 0;
 
     updateStats(Game);
 

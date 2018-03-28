@@ -120,11 +120,13 @@ function renderLava() {
 }
 
 function renderSandstar() {
+  ssCtx.clearRect(0, 0, ssCtx.canvas.width, ssCtx.canvas.height);
     for (let hue=0; hue<120; hue++) {
         ssCtx.globalCompositeOperation='source-over';
         for (let shape=0; shape<4; shape++) {
             let dx = [0, 1, 1, 0][shape];
             let dy = [0, 0, 1, 1][shape];
+            ssCtx.drawImage(sprites, 128+dx*8,208+dy*8, 8,8, 16*hue,16*shape, 16,16);
             ssCtx.drawImage(sprites, 128+dx*8,208+dy*8, 8,8, 16*hue,16*shape, 16,16);
         }
         ssCtx.globalCompositeOperation='source-atop';
@@ -383,6 +385,7 @@ function shuffle(a) {
 }
 
 function showMessage(msg, time) {
+    if (!msg) return;
     if (messageTimer) {
         clearTimeout(messageTimer);
     }
