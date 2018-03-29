@@ -33,5 +33,22 @@
         <category>update</category>
 
       </item>
+
+      <item>
+        <title>Update 1.1 is live</title>
+        <description>
+           This update addresses the most reported problems with the game, such as doubled speed on monitors with high FPS, excess difficulty due to the level resetting upon player's death and performance issues.
+		    Now you have the option to limit FPS to 60 to keep the speed at the intended level and the eaten dots will not reappear, making the implementation closer to that of the original Pacman.
+           Note however that this change reduces the potential highscores by half of what was possible in version 1. Previous highscores in the TOP 10 list were adjusted to accomodate that.
+           On top of that I implemented the basic mobile support, the game can be controlled by taps on the field, summons are available by their respective icons. Playability has been tested on Android Chrome and Firefox.
+           Aside from that there are numerous cosmetic fixes and bugs resolved.
+        </description>
+        <link>https://seedmanc.github.io/japari-parkman/</link>
+        <guid isPermaLink="true">https://seedmanc.github.io/japari-parkman</guid>
+		 <pubDate>Thu, 29 Mar 2018 12:46:00 +0300</pubDate>
+
+        <category>update</category>
+
+      </item>
   </channel>
 </rss>

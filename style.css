@@ -1,6 +1,12 @@
-﻿body {
+﻿html {
+  height: 100%;
+  background-image: linear-gradient(to bottom, #643 0%,#000 100%);
+  background-color: #643;
+}
+
+body {
     margin: 0;
-    background-color: grey;
+    background-color: #643;
     display: flex;
     overflow-x: hidden;
 }
@@ -15,10 +21,13 @@
 
 #idCenter {
     height: 100%;
-    width: 50%;
+    width: 90.3vh;
+    min-width: calc(90.3vh - 176px);
+
     background-image: url(./image/wall.png);
     background-size: 3.6vh;
 }
+
 
 canvas {
     position: absolute;
@@ -44,160 +53,7 @@ canvas {
     margin-right: auto;
 }
 
-#idSplash {
-    position: absolute;
 
-    height: 100%;
-    width: 90.3vh;
-
-    z-index: -1;
-    opacity: 0;
-    background-color: black;
-
-    transition: opacity 0.3s linear, z-index 0.3s step-end;
-}
-
-#idSplash.show {
-    opacity: 0.9;
-    z-index: 1;
-    transition-timing-function: linear, step-start;
-}
-
-.lq-wrapper {
-    margin-bottom: calc(2vh);
-    opacity: 0.7;
-    font-size: calc(2vh);
-}
-.lq-wrapper label:not(.hidden) {
-    display: inline-flex;
-}
-#idLq {
-    height: calc(2vh);
-}
-
-#idendgame {
-    margin-bottom: -5vh;
-    margin-top: 2vh;
-
-    text-align: center;
-
-    font-family: Play;
-    color: white;
-    font-size: calc(4vh);
-}
-
-#idendgame .congrats {
-    color: #a84;
-    -webkit-text-stroke: 1px white;
-    font-size: 130%;
-    text-shadow: 1px 1px rgba(255,255,255,0.66),
-                -1px -1px rgba(255,255,255,0.66),
-                1px -1px rgba(255,255,255,0.66),
-                -1px 1px rgba(255,255,255,0.66);
-}
-
-#idendgame .thegame {
-    -webkit-text-stroke: 1px #db7;
-}
-
-#idendgame .tuned {
-    font-size: 80%;
-}
-
-.leaderboards {
-    margin-top: 10%;
-    width: 60%;
-}
-
-#idLeaderboards {
-    position: relative;
-    width: 100%;
-    z-index: 1;
-
-    border-spacing: calc(0.6vh);
-    border-collapse: separate;
-
-    font-family: Play;
-    color: white;
-    font-size: calc(3vh);
-    text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
-}
-
-
-#idLeaderboards caption {
-    width: 67%;
-
-    background-color: #875;
-
-    padding: 4px;
-    border-radius: 8px;
-    border: 2px solid wheat;
-
-    font-size: calc(3.2vh);
-    margin-bottom: calc(1vh);
-}
-
-#idLeaderboards thead {
-    color: wheat;
-}
-#idLeaderboards .num {
-    text-shadow: none;
-}
-
-#idLeaderboards td:first-of-type {
-    width: 45%;
-
-    background-color: #ec7;
-
-    text-align: left;
-    color: white;
-    font-size: calc(2.6vh);
-    text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
-
-    border: 2px solid white;
-    border-radius: 8px;
-}
-
-#idLeaderboards  td:first-of-type.current {
-    color: yellow;
-}
-
-#idLeaderboards td:nth-of-type(2) {
-    font-size: calc(2.8vh);
-    width: 35%;
-}
-#idLeaderboards td:last-of-type {
-    width: 1%;
-}
-
-#idLeaderboards td {
-    padding: 0 calc(2vh);
-
-    background-color: white;
-
-    text-align: right;
-    text-shadow: none;
-    color: black;
-    font-size: calc(3vh);
-
-    border-radius: 8px;
-    border: 2px solid #ec7;
-}
-
-.credits {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-
-    color: white;
-    text-align: center;
-    font-family: Play;
-}
-
-.credits .first-letter {
-    display: inline-block;
-    transform: scale(-1,1);
-}
 
 .thx {
     color: #985;
@@ -213,7 +69,7 @@ canvas {
     width: 90%;
     height:14%;
 
-    margin-top: 8%;
+    margin-top: calc(9vh - 30px);
 }
 .parkman {
     width: 100%;
@@ -223,20 +79,17 @@ canvas {
     position: relative;
 
     width: auto;
-    height: 105%;
+    height: 104%;
 
-    top: -105%;
+    top: -104%;
     left: 5%;
 }
 .help {
     width: 66%;
-    margin-top: 10%;
+    margin-top: calc(10vh - 20px);
 }
 .help img {
     width: 100%;
-}
-.summons {
-    margin-top: 5%;
 }
 
 .tsuchi {
@@ -251,7 +104,7 @@ canvas {
     flex:1 1 auto;
     height: 100%;
 
-    background-color: #e95;
+    background-color: #643;
 
     background-image: url(./image/wall.png), url(./image/cliff.png),
         linear-gradient(to bottom, #2989cc 0%,#eee 32%,#f3be7c 35%,#e69559 38%,#955a34 85%,#643 100%);
@@ -272,7 +125,6 @@ canvas {
 
     width: 176px;
     height: 320px;
-
     transform: translateY(-60%);
 
     padding: 18px;
@@ -312,3 +164,15 @@ canvas {
 .hidden {
     display: none;
 }
+
+.folded {
+  margin-left: calc(50vw - 45.1vh);
+}
+
+.mobile {
+  display: none;
+}
+.desktop {
+  display: block;
+}
+
