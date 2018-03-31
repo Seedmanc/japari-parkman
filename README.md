@@ -12,3 +12,5 @@ The game has two modes, the default one is classic and is just that, the origina
 Beware of the barred walls, for you can't go through them while Ceruleans can and there will be more of those unexpected passages with every level. Make use of the vantage points - Ceruleans can't go up to high places. Should you find yourself in a pinch, be sure to summon Friends to help you, provided that you've found their items and have Japari Coins. Kaban will reveal the map for a while and Serval will protect you from cerulean attacks.
 
 Let's see how well you can do in this reimagined classic, the highscores are tracked and the leaderboards are available after beating level 5.
+
+Update 1.1 as of March 2018 adds mobile support and reduces difficulty as well as fixing speed issues and other reported problems.
