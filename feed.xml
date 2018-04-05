@@ -50,5 +50,25 @@
         <category>update</category>
 
       </item>
+
+      <item>
+        <title>Parkman backup hostings</title>
+        <description>
+           In case the main url, https://seedmanc.github.io/japari-parkman/ ever goes down, I provide a couple of mirrors for it.
+            Here's two:
+
+            http://anoneko.gitlab.io/japari-parkman - it was originally intended as the main one, but gitlab has proven to be unstable so I had to migrate back to GH. Currently redirects to it.\n
+            http://seedmanc.tumblr.com/japari-parkman - not tested much <br/>
+
+            And of course you can drop by my twitter https://twitter.com/Seedmanc and ask personally for help if any problem arises.
+            Speaking about which, I'm very curious as to how many people even receive these updates via RSS. If you're reading this, please contact me in any way you find convenient to report that this message has reached you.
+        </description>
+        <link>https://seedmanc.github.io/japari-parkman/</link>
+        <guid isPermaLink="true">https://seedmanc.github.io/japari-parkman</guid>
+		 <pubDate>Thu, 05 Apr 2018 20:44:00 +0300</pubDate>
+
+        <category>update</category>
+
+      </item>
   </channel>
 </rss>
