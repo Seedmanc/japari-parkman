@@ -50,7 +50,7 @@
         <category>update</category>
 
       </item>
-
+<item> </item>
       <item>
         <title>Parkman backup hostings</title>
         <description>
@@ -64,8 +64,8 @@
             Speaking about which, I'm very curious as to how many people even receive these updates via RSS. If you're reading this, please contact me in any way you find convenient to report that this message has reached you.
         </description>
         <link>https://seedmanc.github.io/japari-parkman/</link>
-        <guid isPermaLink="true">https://seedmanc.github.io/japari-parkman</guid>
-		 <pubDate>Fri, 06 Apr 2018 20:38:00 +0300</pubDate>
+        <guid isPermaLink="true">https://seedmanc.github.io/japari-parkman/</guid>
+		 <pubDate>Fri, 06 Apr 2018 21:38:00 +0300</pubDate>
 
         <category>update</category>
 
