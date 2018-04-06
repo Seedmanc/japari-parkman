@@ -55,7 +55,7 @@
         <title>Parkman backup hostings</title>
         <description>
            In case the main url, https://seedmanc.github.io/japari-parkman/ ever goes down, I provide a couple of mirrors for it.
-            Here's two:
+		Here's two: <br></br>
 
             http://anoneko.gitlab.io/japari-parkman - it was originally intended as the main one, but gitlab has proven to be unstable so I had to migrate back to GH. Currently redirects to it.\n
             http://seedmanc.tumblr.com/japari-parkman - not tested much  
