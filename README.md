@@ -13,7 +13,7 @@ Among the new mechanics in the main more is the "fog of war" which limits visibi
 
 ![infrared vision](https://pp.userapi.com/c840426/v840426427/6ea60/HrhoyfgUjHc.jpg)
 
-There are also vantage points and overpasses in the labyringth, providing oversight and protection.
+There are also vantage points and overpasses in the labyrinth, providing oversight and protection.
 
 ![](https://pp.userapi.com/c840426/v840426427/6ea6b/t1tf82GmQE4.jpg)
 
