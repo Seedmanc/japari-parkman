@@ -520,7 +520,7 @@
 
         window.step.volume=0.0;
         window.step0.volume=0.0;
-        //window.step.play();  window.step0.play();
+        window.step.play();  window.step0.play();
         window.sandstar.currentTime = 0.35;
         window.sandstar.volume = 0.3;
         window.sandstar0.volume = 0.3;
